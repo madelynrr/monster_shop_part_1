@@ -56,27 +56,6 @@ RSpec.describe 'Site Navigation' do
         expect(current_path).to eq("/register")
       end
     end
-  end
-  describe 'as a registered regular user' do
-    it 'shows same links as visitor plus link to profile and logout' do
-      user = create(:random_user, role: 0)
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
-      visit '/'
-
-      expect(page).to have_link("Profile")
-      expect(page).to have_link("Log Out")
-
-      expect(page).to have_link("Monster Shop")
-      expect(page).to have_link("All Items")
-      expect(page).to have_link("All Merchants")
-      expect(page).to have_link("Cart: 0")
-
-      expect(page).not_to have_link("Login")
-      expect(page).not_to have_link("Register")
-
-      expect(page).to have_content("Logged in as #{user.name}")
-    end
   end
 end
