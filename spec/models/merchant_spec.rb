@@ -56,5 +56,5 @@ describe Merchant, type: :model do
       expect(@meg.distinct_cities.include?('Hershey')).to be_truthy
     end
 
-  end
+   end
 end
