@@ -31,9 +31,9 @@ class SessionsController < ApplicationController
     if user.default?
       redirect_to '/profile'
     elsif user.merchant_employee? || user.merchant_admin?
-      redirect_to '/merchant/dashboard'
+      redirect_to '/merchant'
     elsif user.admin?
-      redirect_to '/admin/dashboard'
+      redirect_to '/admin'
     end
     session[:user_id] = user.id
     flash[:success] = "Welcome, #{user.name}, you are logged in!"

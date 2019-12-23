@@ -9,10 +9,10 @@ RSpec.describe 'As a user' do
 
     expect(user.role).to eq("default")
 
-    visit '/admin/dashboard'
+    visit '/admin'
     expect(page).to have_content("The page you were looking for doesn't exist (404)")
 
-    visit '/merchant/dashboard'
+    visit '/merchant'
     expect(page).to have_content("The page you were looking for doesn't exist (404)")
 
   end
@@ -77,7 +77,7 @@ RSpec.describe 'As a user' do
 
     expect(current_path).to eq("/profile/orders")
   end
-  
+
   describe 'registered user can not edit profile email that belongs to other user' do
     it 'redirects back to edit profile page and displays flash message if duplicate' do
 

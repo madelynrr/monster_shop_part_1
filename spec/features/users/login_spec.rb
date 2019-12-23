@@ -60,10 +60,10 @@ RSpec.describe "as a user" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit "/admin/dashboard"
+    visit "/admin"
     expect(page).to have_content("The page you were looking for doesn't exist.")
 
-    visit "/merchant/dashboard"
+    visit "/merchant"
     expect(page).to have_content("The page you were looking for doesn't exist.")
   end
 
@@ -80,7 +80,7 @@ RSpec.describe "as a user" do
 
       click_button "Login"
 
-      expect(current_path).to eq('/merchant/dashboard')
+      expect(current_path).to eq('/merchant')
       expect(page).to have_content("Welcome, #{merchant.name}, you are logged in!")
     end
   end
@@ -119,7 +119,7 @@ RSpec.describe "as a user" do
 
       visit '/login'
 
-      expect(current_path).to eq('/admin/dashboard')
+      expect(current_path).to eq('/admin')
       expect(page).to have_content("#{admin.name}, you are already logged in!")
     end
 
@@ -136,7 +136,7 @@ RSpec.describe "as a user" do
       click_button "Login"
 
       visit '/login'
-      expect(current_path).to eq('/merchant/dashboard')
+      expect(current_path).to eq('/merchant')
       expect(page).to have_content("#{merchant.name}, you are already logged in!")
     end
 
