@@ -109,7 +109,7 @@ RSpec.describe 'as a merchant', type: :feature do
       within "#order-#{order_3.id}" do
         expect(page).to have_link("#{order_3.id}")
         expect(page).to have_content(order_3.created_at)
-        expect(page).to have_content("Quantity of my items in this order: 3")
+        expect(page).to have_content("3")
         expect(page).to have_content("Value of my items in this order: 300")
       end
 

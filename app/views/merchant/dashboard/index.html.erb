@@ -4,3 +4,12 @@
 <p><%= current_user.merchant.city %>
 <%= current_user.merchant.state %>
 <%= current_user.merchant.zip %></p>
+
+<% current_user.merchant.orders.each do |order| %>
+<section id="order-<%= order.id %>">
+  <p><%= link_to "#{order.id}", "/orders/#{order.id}" %></p>
+  <p><%= order.created_at %></p>
+  <% require "pry"; binding.pry %>
+  <p>Quantity of my items in this order: <%= order.total_item_quantity(current_user.merchant) %></p>
+</section>
+<% end %>
