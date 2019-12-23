@@ -1,3 +1,3 @@
-class Orders::BaseController < ApplicationController
+class Merchant::OrdersController < Merchant::BaseController
 
 end
