@@ -56,5 +56,19 @@ describe Merchant, type: :model do
       expect(@meg.distinct_cities.include?('Hershey')).to be_truthy
     end
 
+    it "orders" do
+      steve = create(:random_merchant)
+      chain = steve.items.create(name: "Chain", description: "It'll never break!", price: 40, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 22)
+      order_1 = @user.orders.create!(name: 'Meg', address: '123 Stang Ave', city: 'Hershey', state: 'PA', zip: 17033)
+      order_2 = @user.orders.create!(name: 'Brian', address: '123 Brian Ave', city: 'Denver', state: 'CO', zip: 17033)
+      order_3 = @user.orders.create!(name: 'Dao', address: '123 Mike Ave', city: 'Denver', state: 'CO', zip: 17033)
+      order_1.item_orders.create!(item: @tire, price: @tire.price, quantity: 2)
+      order_2.item_orders.create!(item: chain, price: chain.price, quantity: 2)
+      order_3.item_orders.create!(item: @tire, price: @tire.price, quantity: 2)
+
+      expect(steve.orders).to eq([order_2])
+      expect(@meg.orders.include?(order_1)).to be_truthy
+      expect(@meg.orders.include?(order_3)).to be_truthy
+    end
   end
 end

@@ -83,8 +83,8 @@ RSpec.describe 'as a merchant', type: :feature do
       pencil = mike.items.create(name: "Yellow Pencil", description: "You can write on paper with it!", price: 2, image: "https://images-na.ssl-images-amazon.com/images/I/31BlVr01izL._SX425_.jpg", inventory: 100)
 
       order_1 = @user.orders.create(name: "Jordan", address: "123 Hi Road", city: "Cleveland", state: "OH", zip: "44333")
-      order_2 = @user.create(:random_order)
-      order_3 = @user.create(:random_order)
+      order_2 = create(:random_order, user: @user)
+      order_3 = create(:random_order, user: @user)
 
       tire_order = ItemOrder.create!(item: tire, order: order_1, price: tire.price, quantity: 5)
       paper_order = ItemOrder.create!(item: paper, order: order_1, price: paper.price, quantity: 3)
@@ -99,10 +99,21 @@ RSpec.describe 'as a merchant', type: :feature do
 
       visit '/merchant'
 
-      within "#merchant-orders" do
-        expect(page).to have_content
+      within "#order-#{order_1.id}" do
+        expect(page).to have_link("#{order_1.id}")
+        expect(page).to have_content(order_1.created_at)
+        expect(page).to have_content("Quantity of my items in this order: 8")
+        expect(page).to have_content("Value of my items in this order: 560")
       end
 
+      within "#order-#{order_3.id}" do
+        expect(page).to have_link("#{order_3.id}")
+        expect(page).to have_content(order_3.created_at)
+        expect(page).to have_content("Quantity of my items in this order: 3")
+        expect(page).to have_content("Value of my items in this order: 300")
+      end
+
+      expect(page).to_not have_css("#order-#{order_2.id}")
 
 #       As a merchant
 # When I visit my merchant dashboard ("/merchant")

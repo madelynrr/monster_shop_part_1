@@ -25,4 +25,10 @@ class Merchant < ApplicationRecord
     item_orders.distinct.joins(:order).pluck(:city)
   end
 
+  def orders
+    items.map do |item|
+      item.orders
+    end.flatten
+  end
+
 end
