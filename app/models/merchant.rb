@@ -4,7 +4,7 @@ class Merchant < ApplicationRecord
   has_many :users
 
   has_many :orders, through: :item_orders
-  
+
   validates_presence_of :name,
                         :address,
                         :city,
@@ -27,11 +27,4 @@ class Merchant < ApplicationRecord
   def distinct_cities
     item_orders.distinct.joins(:order).pluck(:city)
   end
-
-  def orders
-    items.map do |item|
-      item.orders
-    end.flatten
-  end
-
 end
