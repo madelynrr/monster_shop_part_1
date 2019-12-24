@@ -36,6 +36,7 @@ class Order <ApplicationRecord
 
   def merchant_item_total(merchant)
     items.where(merchant: merchant).sum("item_orders.quantity * item_orders.price")
+  end
 
   def ship
     update(current_status: 2)
