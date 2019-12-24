@@ -8,7 +8,7 @@
 <% current_user.merchant.orders.distinct.each do |order| %>
 <% if order.current_status == "pending" %>
 <section id = "pending-<%= order.id %>">
-  <p>ID: <%= link_to "#{order.id}", "/orders/#{order.id}" %></p>
+  <p>ID: <%= link_to "#{order.id}", "merchant/orders/#{order.id}" %></p>
   <p>Order Created: <%= order.created_at %></p>
   <p>Quantity of my items in this order: <%= order.merchant_item_quantity(current_user.merchant) %></p>
   <p>Value of my items in this order: <%= number_to_currency(order.merchant_item_total(current_user.merchant)) %></p>
