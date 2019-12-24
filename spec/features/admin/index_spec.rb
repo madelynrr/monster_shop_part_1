@@ -66,6 +66,6 @@ RSpec.describe "As an admin" do
     end
 
     click_on("#{order_4.name}")
-    expect(current_path).to eql("/admin/profile")
+    expect(current_path).to eql("/admin/profile/#{user_2.id}")
   end
 end
