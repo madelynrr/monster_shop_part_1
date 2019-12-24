@@ -4,6 +4,8 @@ class Order <ApplicationRecord
   has_many :item_orders
   has_many :items, through: :item_orders
 
+  has_many :merchants, through: :item_orders
+
   belongs_to :user
 
   enum current_status: %w(pending packaged shipped cancelled)
@@ -25,5 +27,13 @@ class Order <ApplicationRecord
       item_order.update(status: 1)
     end
     update(current_status: 1)
+  end
+
+  def merchant_item_quantity(merchant)
+    items.where(merchant: merchant).sum("item_orders.quantity")
+  end
+
+  def merchant_item_total(merchant)
+    items.where(merchant: merchant).sum("item_orders.quantity * item_orders.price")
   end
 end

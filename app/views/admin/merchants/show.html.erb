@@ -1,0 +1,18 @@
+<h1 align = "center">Merchant Dashboard</h1>
+<%= @merchant.name %></br></br>
+<%= @merchant.address %>
+<p><%= @merchant.city %>
+<%= @merchant.state %>
+<%= @merchant.zip %></p>
+<h2> Pending Orders </h2>
+<% @merchant.orders.distinct.each do |order| %>
+  <% if order.current_status == "pending" %>
+    <section id ="order-pending-<%= order.id %>">
+      ID: <%= link_to "#{order.id}", "/merchant/order/#{order.id}" %>
+      Date Created: <%= order.created_at %>
+      Total Quantity: <%= order.items.count %>
+      Total: <%= order.grandtotal %>
+    </section>
+
+  <% end %>
+<% end %>
