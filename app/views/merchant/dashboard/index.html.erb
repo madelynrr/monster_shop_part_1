@@ -4,6 +4,7 @@
 <p><%= current_user.merchant.city %>
 <%= current_user.merchant.state %>
 <%= current_user.merchant.zip %></p>
+<%= link_to "See My Items", "/merchant/dashboard/items" %>
 
 <% current_user.merchant.orders.distinct.each do |order| %>
 <% if order.current_status == "pending" %>
