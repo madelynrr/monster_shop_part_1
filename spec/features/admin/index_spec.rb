@@ -97,7 +97,7 @@ RSpec.describe "As an admin" do
         click_button "Ship Order"
     end
 
-    visit "/admin/dashboard"
+    visit "/admin"
 
     expect(page).not_to have_css("#order-#{order_1.id}")
     expect(page).to have_css("#order-#{order_2.id}")
