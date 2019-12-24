@@ -113,6 +113,7 @@ RSpec.describe 'as a @merchant', type: :feature do
       end
 
       expect(page).to_not have_content("ID: #{order_2.id}")
+      expect(page).to have_link "See My Items"
     end
   end
 end

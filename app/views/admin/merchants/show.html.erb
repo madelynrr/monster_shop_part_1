@@ -8,11 +8,12 @@
 <% @merchant.orders.distinct.each do |order| %>
   <% if order.current_status == "pending" %>
     <section id ="order-pending-<%= order.id %>">
-      ID: <%= link_to "#{order.id}", "/merchant/order/#{order.id}" %>
+      ID: <%= link_to "#{order.id}", "/merchant/orders/#{order.id}" %>
       Date Created: <%= order.created_at %>
       Total Quantity: <%= order.items.count %>
       Total: <%= order.grandtotal %>
     </section>
+
 
   <% end %>
 <% end %>
