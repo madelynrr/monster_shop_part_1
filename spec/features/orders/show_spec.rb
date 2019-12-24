@@ -38,7 +38,8 @@ RSpec.describe "as a registered user" do
 
       expect(page).to have_content(@order.id)
       expect(page).to have_content(@order.created_at)
-      expect(page).to have_content(@order.updated_at)
+      expect(page).to have_content("This order was placed at: #{@order.created_at}")
+      expect(page).to have_content("This order was updated at: #{@order.updated_at}")
       expect(page).to have_content(@order.current_status.upcase)
 
       expect(page).to have_content(@tire.name)

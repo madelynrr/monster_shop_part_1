@@ -48,8 +48,9 @@
 <section id="grandtotal">
   <p>Total: <%=number_to_currency(@order.grandtotal)%></p>
 </section>
-<section id="datecreated">
+<section id="dateinfo">
   <p> This order was placed at: <%= @order.created_at%></p>
+  <p> This order was updated at: <%= @order.updated_at%></p>
 </section>
 <section id="cancel">
   <% if @order.current_status == "pending" || @order.current_status == "packaged" %>

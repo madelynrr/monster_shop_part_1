@@ -67,8 +67,8 @@ Rails.application.routes.draw do
     get '/users', to: 'users#index'
     get '/merchants/:id', to: 'merchants#show'
     get '/dashboard/items', to: 'dashboard#items'
+    patch '/orders/:id', to: 'dashboard#update'
   end
-
 
   get '/user/password/edit', to: 'users#password_edit'
   patch '/user/id', to: 'users#update'
