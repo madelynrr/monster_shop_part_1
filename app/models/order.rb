@@ -3,6 +3,7 @@ class Order <ApplicationRecord
 
   has_many :item_orders
   has_many :items, through: :item_orders
+  has_many :merchants, through: :item_orders
 
   has_many :merchants, through: :item_orders
 
@@ -35,5 +36,8 @@ class Order <ApplicationRecord
 
   def merchant_item_total(merchant)
     items.where(merchant: merchant).sum("item_orders.quantity * item_orders.price")
+
+  def ship
+    update(current_status: 2)
   end
 end

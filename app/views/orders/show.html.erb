@@ -52,7 +52,7 @@
   <p> This order was placed at: <%= @order.created_at%></p>
 </section>
 <section id="cancel">
-  <% if @order.current_status == "pending" %>
+  <% if @order.current_status == "pending" || @order.current_status == "packaged" %>
     <%= button_to "Cancel Order", "/orders/#{@order.id}", method: :patch %>
   <% end %>
 </section>

@@ -94,7 +94,6 @@ RSpec.describe "as a registered user" do
         merchant_order.fulfill
 
         expect(merchant_order.current_status).to eql("packaged")
-
       end
     end
   end

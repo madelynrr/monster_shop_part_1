@@ -44,7 +44,7 @@ RSpec.describe "As an admin" do
 
     click_button "Login"
 
-    within "#order-packaged" do
+    within "#order-#{order_2.id}" do
     expect(page).to have_link(order_2.name)
     expect(page).to have_content(order_2.id)
     expect(page).to have_content(order_2.created_at)
@@ -67,5 +67,45 @@ RSpec.describe "As an admin" do
 
     click_on("#{order_4.name}")
     expect(current_path).to eql("/admin/profile/#{user_2.id}")
+  end
+
+  it "can ship packaged orders" do
+    admin = create(:random_user, role: 1)
+    user = create(:random_user, role: 0)
+    user_2 = create(:random_user, role: 0)
+    order_1 = create(:random_order, user_id: user.id, current_status: 1)
+    order_2 = create(:random_order, user_id: user_2.id, current_status: 1)
+    merchant = create(:random_merchant)
+    item_1 = create(:random_item, merchant_id: merchant.id)
+    item_2 = create(:random_item, merchant_id: merchant.id)
+    item_order = ItemOrder.create!(item: item_1, order: order_1, price: item_1.price, quantity: 1, status: 1)
+    item_order_2 = ItemOrder.create!(item: item_2, order: order_1, price: item_2.price, quantity: 2, status: 1)
+    item_order_3 = ItemOrder.create!(item: item_1, order: order_2, price: item_1.price, quantity: 3, status: 1)
+    item_order_4 = ItemOrder.create!(item: item_2, order: order_2, price: item_2.price, quantity: 4, status: 1)
+
+    visit '/'
+    click_link "Login"
+    fill_in :email, with: admin.email
+    fill_in :password, with: admin.password
+    click_button "Login"
+
+    within "#order-#{order_2.id}" do
+      expect(page).to have_button "Ship Order"
+    end
+
+    within "#order-#{order_1.id}" do
+        click_button "Ship Order"
+    end
+
+    visit "/admin/dashboard"
+
+    expect(page).not_to have_css("#order-#{order_1.id}")
+    expect(page).to have_css("#order-#{order_2.id}")
+
+    within "#order-shipped" do
+      expect(page).to have_content(order_1.id)
+      expect(page).to have_content(order_1.name)
+      expect(page).to have_content(order_1.created_at)
+    end
   end
 end

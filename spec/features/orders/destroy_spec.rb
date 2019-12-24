@@ -18,8 +18,11 @@ RSpec.describe "As a default user" do
   end
 
   describe 'When I am on the order show page' do
-    it "has a button to cancel that order if the order is pending" do
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    it "has a button to cancel that order if it is not shipped" do
+      visit "/login"
+      fill_in :email, with: @user.email
+      fill_in :password, with: @user.password
+      click_button "Login"
 
       visit "/profile/orders/#{@order.id}"
 
@@ -27,6 +30,18 @@ RSpec.describe "As a default user" do
 
       within "#cancel" do
         expect(page).to have_button("Cancel Order")
+      end
+
+      @order.fulfill
+      visit "/profile/orders/#{@order.id}"
+      within "#cancel" do
+        expect(page).to have_button("Cancel Order")
+      end
+
+      @order.ship
+      visit "/profile/orders/#{@order.id}"
+      within "#cancel" do
+        expect(page).not_to have_button("Cancel Order")
       end
     end
 
