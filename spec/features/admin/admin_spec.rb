@@ -125,7 +125,7 @@ RSpec.describe 'As an Admin' do
     expect(page).to have_content("You have enabled #{merchant_disabled.name}")
   end
 
-  it "disables a merchant's items if the merhcnat is disabled" do
+  it "disables a merchant's items if the merchant is disabled" do
     admin = create(:random_user, role: 1)
     merchant = create(:random_merchant)
     merchant_2 = create(:random_merchant)
@@ -146,6 +146,9 @@ RSpec.describe 'As an Admin' do
     expect(page).not_to have_css("img[src*='#{item.image}']")
     expect(page).to have_content(item_2.name)
     expect(page).to have_css("img[src*='#{item_2.image}']")
+
+    item.reload
+    item_2.reload
 
     expect(item.active?).to eq(false)
     expect(item_2.active?).to eq(true)
