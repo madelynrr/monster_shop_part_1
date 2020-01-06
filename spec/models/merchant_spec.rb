@@ -84,5 +84,19 @@ describe Merchant, type: :model do
       expect(@meg.orders.include?(order_1)).to be_truthy
       expect(@meg.orders.include?(order_3)).to be_truthy
     end
+
+    it "toggle_status" do
+      steve = create(:random_merchant)
+      stevie = create(:random_merchant, status: 1)
+
+      expect(steve.enabled?).to be_truthy
+      steve.toggle_status
+      expect(steve.disabled?).to be_truthy
+
+      expect(stevie.disabled?).to be_truthy
+      stevie.toggle_status
+      expect(stevie.enabled?).to be_truthy
+
+    end
   end
 end

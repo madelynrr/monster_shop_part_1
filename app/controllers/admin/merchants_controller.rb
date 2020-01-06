@@ -6,12 +6,13 @@ class Admin::MerchantsController < Admin::BaseController
 
   def update
     merchant = Merchant.find(params[:id])
-    merchant.update(status: 1)
-
-    if merchant.save
+    merchant.toggle_status
+    if merchant.enabled?
+      flash[:success] = "You have enabled #{merchant.name}"
+    else
       flash[:success] = "You have disabled #{merchant.name}"
-      redirect_to '/merchants'
     end
+    redirect_to '/merchants'
   end
 
 end
