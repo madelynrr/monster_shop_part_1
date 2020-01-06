@@ -96,7 +96,20 @@ describe Merchant, type: :model do
       expect(stevie.disabled?).to be_truthy
       stevie.toggle_status
       expect(stevie.enabled?).to be_truthy
+    end
 
+    it ".toggle_item_status" do
+      merchant = create(:random_merchant)
+      item = create(:random_item, merchant_id: merchant.id)
+      item_2 = create(:random_item, merchant_id: merchant.id)
+
+      merchant.toggle_item_status
+
+      item.reload
+      item_2.reload
+
+      expect(item.active?).to eq(false)
+      expect(item_2.active?).to eq(false)
     end
   end
 end
