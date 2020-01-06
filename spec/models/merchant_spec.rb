@@ -14,6 +14,20 @@ describe Merchant, type: :model do
     it {should have_many :users}
   end
 
+  describe 'status' do
+    it "has a default of enabled" do
+      merchant = create(:random_merchant)
+
+      expect(merchant.enabled?).to be_truthy
+    end
+
+    it "can be disabled" do
+      another_merchant = create(:random_merchant, status: 1)
+
+      expect(another_merchant.disabled?).to be_truthy
+    end
+  end
+
   describe 'instance methods' do
     before(:each) do
       @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)

@@ -10,6 +10,7 @@ class Merchant < ApplicationRecord
                         :state,
                         :zip
 
+  enum status: %w(enabled disabled)
 
   def no_orders?
     item_orders.empty?

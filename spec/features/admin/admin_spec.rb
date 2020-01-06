@@ -61,4 +61,42 @@ RSpec.describe 'As an Admin' do
     click_on("#{order.id}")
     expect(current_path).to eq("/merchant/orders/#{order.id}")
   end
+
+  it "can see button to disable each merchant if the merchant is not disabled" do
+    admin = create(:random_user, role: 1)
+    merchant_enabled = create(:random_merchant)
+    merchant_enabled2 = create(:random_merchant)
+    merchant_disabled = create(:random_merchant, status: 1)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit '/merchants'
+
+    within "#merchant-#{merchant_disabled.id}" do
+      expect(page).to_not have_button('Disable Merchant')
+    end
+
+    within "#merchant-#{merchant_enabled.id}" do
+      click_button('Disable Merchant')
+    end
+
+    expect(current_path).to eq('/merchants')
+
+    within "#merchant-#{merchant_enabled.id}" do
+      expect(page).to_not have_button('Disable Merchant')
+    end
+
+    within "#merchant-#{merchant_enabled2.id}" do
+      expect(page).to have_button('Disable Merchant')
+    end
+
+    merchant = Merchant.find(merchant_enabled.id)
+
+    expect(merchant.disabled?).to be_truthy
+    expect(merchant_enabled2.enabled?).to be_truthy
+
+    flash = "You have disabled #{merchant_enabled.name}"
+
+    expect(page).to have_content(flash)
+  end
 end
