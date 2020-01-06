@@ -35,4 +35,11 @@ class Merchant < ApplicationRecord
       update(status: 0)
     end
   end
+
+  def toggle_item_status
+    items.each do |item|
+      item.toggle!(:active?)
+    end
+  end
+
 end
