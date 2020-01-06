@@ -27,4 +27,12 @@ class Merchant < ApplicationRecord
   def distinct_cities
     item_orders.distinct.joins(:order).pluck(:city)
   end
+
+  def toggle_status
+    if enabled?
+      update(status: 1)
+    elsif disabled?
+      update(status: 0)
+    end
+  end
 end
