@@ -90,7 +90,7 @@ RSpec.describe 'As an Admin' do
       expect(page).to have_button('Disable Merchant')
     end
 
-    merchant = Merchant.all[1]
+    merchant = Merchant.find(merchant_enabled.id)
 
     expect(merchant.disabled?).to be_truthy
     expect(merchant_enabled2.enabled?).to be_truthy
