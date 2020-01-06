@@ -99,4 +99,40 @@ RSpec.describe 'As an Admin' do
 
     expect(page).to have_content(flash)
   end
+
+  it "Can enable a disabled merchant " do
+    admin = create(:random_user, role: 1)
+    merchant_enabled = create(:random_merchant)
+    merchant_disabled = create(:random_merchant, status: 1)
+    merchant_disabled2 = create(:random_merchant, status:1)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit '/merchants'
+
+    within "#merchant-#{merchant_disabled.id}" do
+      click_button "Enable Merchant"
+    end
+
+    merchant_disabled.reload
+
+    within "#merchant-#{merchant_disabled.id}" do
+      expect(page).to_not have_button "Enable Merchant"
+      expect(page).to have_button "Disable Merchant"
+    end
+
+
+    expect(merchant_disabled.enabled?).to be_truthy
+    expect(page).to have_content("You have enabled #{merchant_disabled.name}")
+
+  end
 end
+
+# User Story 40, Admin enables a merchant account
+#
+# As an admin
+# When I visit the merchant index page
+# I see an "enable" button next to any merchants whose accounts are disabled
+# When I click on the "enable" button
+# I am returned to the admin's merchant index page where I see that the merchant's account is now enabled
+# And I see a flash message that the merchant's account is now enabled
