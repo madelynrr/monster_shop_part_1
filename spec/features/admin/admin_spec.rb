@@ -61,4 +61,9 @@ RSpec.describe 'As an Admin' do
     click_on("#{order.id}")
     expect(current_path).to eq("/merchant/orders/#{order.id}")
   end
+
+  it "can see button to disable each merchant if the merchant is not disabled" do
+    admin = create(:random_user, role: 1)
+
+  end
 end
