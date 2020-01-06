@@ -34,6 +34,7 @@ class Merchant < ApplicationRecord
     elsif disabled?
       update(status: 0)
     end
+    toggle_item_status
   end
 
   def toggle_item_status
