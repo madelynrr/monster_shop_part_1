@@ -28,4 +28,8 @@ class Item <ApplicationRecord
   def self.popularity(desc_or_asc = "asc")
     joins(:item_orders).select('items.*, sum(item_orders.quantity) as quantity').group(:id).order("quantity #{desc_or_asc}").limit(5)
   end
+
+  def toggle_active_status
+    toggle!(:active?)
+  end
 end
