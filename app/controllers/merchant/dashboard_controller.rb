@@ -1,5 +1,7 @@
 class Merchant::DashboardController < Merchant::BaseController
   def index
+    @items = Merchant.find(current_user.merchant.id).items
+    binding.pry
   end
 
   def new
