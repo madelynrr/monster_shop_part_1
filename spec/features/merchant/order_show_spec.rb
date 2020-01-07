@@ -5,13 +5,13 @@ RSpec.describe 'As a merchant employee/admin' do
     merchant = create(:random_merchant)
     merchant2 = create(:random_merchant)
     merchant_employee = create(:random_user, role: 3, merchant_id: merchant.id)
-    user = create(:random_user)
+    @user = create(:random_user)
 
     item_1 = create(:random_item, merchant_id: merchant.id)
     item_2 = create(:random_item, merchant_id: merchant.id)
     item_3 = create(:random_item, merchant_id: merchant2.id)
 
-    @order = create(:random_order, user_id: user.id)
+    @order = create(:random_order, user_id: @user.id)
     item_1_order = ItemOrder.create!(item: item_1, order: @order, price: item_1.price, quantity: 5)
     item_2_order = ItemOrder.create!(item: item_2, order: @order, price: item_2.price, quantity: 3)
     item_3_order = ItemOrder.create!(item: item_3, order: @order, price: item_3.price, quantity: 9)
@@ -29,4 +29,16 @@ RSpec.describe 'As a merchant employee/admin' do
     expect(current_path).to eq("/merchant/orders/#{@order.id}")
 
   end
+
+  it 'sees recipients information on order show page' do
+    visit "/merchant/orders/#{@order.id}"
+
+    expect(page).to have_content(@order.id)
+    expect(page).to have_content(@user.name)
+    expect(page).to have_content(@user.address)
+    expect(page).to have_content(@user.city)
+    expect(page).to have_content(@user.state)
+    expect(page).to have_content(@user.zip_code)
+  end
+
 end
