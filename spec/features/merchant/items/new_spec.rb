@@ -11,7 +11,7 @@ RSpec.describe 'As a merchant admin/user' do
         @merchant_admin = create(:random_user, role: 2, merchant: @meg)
 
         @merchant_2 = create(:random_merchant)
-        @paper = create(:random_item, merchant: @merchant_2)
+        @item_2 = create(:random_item, merchant: @merchant_2)
 
     end 
 
@@ -44,6 +44,9 @@ RSpec.describe 'As a merchant admin/user' do
     expect(page).to have_content("You have successfully added an item!")
 
     new_item = Item.last
+
+    expect(page).to_not have_content("#{@item_2.name}")
+    expect(page).to_not have_content("#{@item_2.description}")
 
     expect(page).to have_content("FIG x New Balance 996")
     expect(page).to have_content("Dope biking shoes in black.")
