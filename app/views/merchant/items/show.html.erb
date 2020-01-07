@@ -1,6 +1,6 @@
 <h1>Merchant Items Page</h1>
 
-<%= link_to "Add New Item", "/merchant/items/new"%>
+<center><h2><%= link_to "Add New Item", "/merchant/items/new"%></h2></center>
 
 <%= @items.each do |item| %>
 <section id="item-<%=item.id%>">
@@ -19,6 +19,5 @@
   <% if item.no_orders? %>
     <%= link_to "Delete Item", "/merchant/items/#{item.id}", method: :delete %>
   <% end %>
-  <%= link_to 'Edit Item', "/merchant/items/#{item.id}/edit" %>
 </section>
 <% end %>
