@@ -75,23 +75,29 @@ RSpec.describe 'merchant show page', type: :feature do
       end
 
       within "#item-#{item_2.id}" do
-        click_button("Deactivate")
+        click_button "Deactivate"
       end
 
       expect(current_path).to eq("/merchant/items")
       expect(page).to have_content("#{item_2.name} is deactivated")
+      item_1.reload
+      item_2.reload
+      item_3.reload
+      expect(item_1.active?).to eq(true)
+      expect(item_2.active?).to eq(false)
+      expect(item_3.active?).to eq(false)
+      
+      # within "#item-#{item_1.id}" do
+      #   expect(page).to have_content("Active")
+      # end
 
-      within "#item-#{item_1.id}" do
-        expect(page).to have_content("Active")
-      end
-
-      within "#item-#{item_2.id}" do
-        expect(page).to have_content("Inactive")
-      end
-
-      within "#item-#{item_3.id}" do
-        expect(page).to have_content("Inactive")
-      end
+      # within "#item-#{item_2.id}" do
+      #   expect(page).to have_content("Inactive")
+      # end
+      #
+      # within "#item-#{item_3.id}" do
+      #   expect(page).to have_content("Inactive")
+      # end
 
     end
 
