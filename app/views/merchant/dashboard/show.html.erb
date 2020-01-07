@@ -1,17 +1,21 @@
-<h1>Merchant Items Page </h1>
-<%= link_to "Add New Item", "/merchant/items/new" %>
+<h1>Merchant Items Page</h1>
 
-  <% @items.each do |item| %>
-      <section class = "grid-item" id= 'item-<%=item.id%>'>
-        <%= link_to image_tag(item.image), "/items/#{item.id}", id: "#{item.id}-image" %>
-        <h2> <%= item.name %>
-        <p> <%= item.description%> </p>
-        <p>Price: <%=number_to_currency(item.price) %> </p>
-        <p>Inventory: <%= item.inventory %> </p>
-      <% if item.active? %>
-        <p>Active</p>
-      <% else %>
-        <p>Inactive</p>
-      <% end %>
-    </section>
-    <% end %>
+<% @merchant.items.each do |item| %>
+<section id="item-<%=item.id%>">
+  <%=  item.name %>
+  <%=  item.description %>
+  <%=  item.price %>
+  <%=  image_tag(item.image) %>
+  <% if item.active? %>
+    <p>Active</p>
+    <%= button_to "Deactivate", "/merchant/items/#{item.id}", method: :patch %>
+  <% else %>
+    <p>Inactive</p>
+    <%= button_to "Activate", "/merchant/items/#{item.id}", method: :patch %>
+  <% end %>
+  <%= item.inventory %>
+  <% if item.no_orders? %>
+    <%= link_to "Delete Item", "/merchant/items/#{item.id}", method: :delete %>
+  <% end %>
+</section>
+<% end %>

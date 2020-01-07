@@ -1,12 +1,12 @@
 class Merchant::DashboardController < Merchant::BaseController
   def index
-  
+
   end
 
   def new
-  end 
+  end
 
-  def create 
+  def create
     merchant = Merchant.find(current_user.merchant.id)
     item = merchant.items.create(item_params)
       if item.image == ""
@@ -19,7 +19,7 @@ class Merchant::DashboardController < Merchant::BaseController
         flash[:error] = item.errors.full_messages.to_sentence
         render :new
       end
-  end 
+  end
 
   def show
     @items = Merchant.find(current_user.merchant.id).items
@@ -29,4 +29,16 @@ private
   def item_params
     params.permit(:name,:description,:price,:inventory,:image)
   end
+
+  def update
+    item = Item.find(params[:id])
+    item.toggle_active_status
+    if item.active?
+      flash[:success] = "#{item.name} is Activated"
+    else
+      flash[:success] = "#{item.name} is deactivated"
+    end
+    redirect_to '/merchant/items'
+  end
+
 end

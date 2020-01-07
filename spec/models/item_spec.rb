@@ -102,5 +102,13 @@ describe Item, type: :model do
         expect(Item.popularity[4]).to eq(item_6)
       end
     end
+    it '.toggle active status' do
+      expect(@chain.active?).to eq(true)
+      @chain.toggle_active_status
+      expect(@chain.active?).to eq(false)
+      @chain.toggle_active_status
+      expect(@chain.active?).to eq(true)
+      
+    end
   end
 end
