@@ -45,6 +45,7 @@ RSpec.describe 'As a merchant admin/user' do
 
       expect(page).to have_content("FIG x New Balance 996")
       expect(page).to have_content("Dope biking shoes in black.")
+      expect(page).to have_content("Price: $100.00")
       expect(page).to have_content("Inventory: 10")
       expect(page).to have_content("You have successfully added an item!")
       expect(page).to have_css("img[src*='https://cdn.shopify.com/s/files/1/0139/8942/products/Womens_New_Balance_996_black-1_900x900.jpg']")
@@ -72,7 +73,7 @@ RSpec.describe 'As a merchant admin/user' do
 
       expect(page).to have_content("Pearl Izumi Winter Bike Gloves")
       expect(page).to have_content("Whether battling wintertime chill on a fatbike in Minnesota, or tackling a frigid Colorado cyclocross race in late December, this is our warmest winter glove.")
-      expect(page).to have_content("Price: 95")
+      expect(page).to have_content("Price: $95.00")
       expect(page).to have_content("Inventory: 5")
       expect(page).to have_css("img[src*='https://literalminded.files.wordpress.com/2010/11/image-unavailable1.png']")
     
