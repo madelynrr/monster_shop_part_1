@@ -1,4 +1,17 @@
 <h1>Merchant Items Page </h1>
-
-
 <%= link_to "Add New Item", "/merchant/items/new" %>
+
+  <% @items.each do |item| %>
+      <section class = "grid-item" id= 'item-<%=item.id%>'>
+        <%= link_to image_tag(item.image), "/items/#{item.id}", id: "#{item.id}-image" %>
+        <h2> <%= item.name %>
+        <p> <%= item.description%> </p>
+        <p>Price: <%=number_to_currency(item.price) %> </p>
+        <p>Inventory: <%= item.inventory %> </p>
+      <% if item.active? %>
+        <p>Active</p>
+      <% else %>
+        <p>Inactive</p>
+      <% end %>
+    </section>
+    <% end %>
