@@ -114,7 +114,7 @@ describe Merchant, type: :model do
 
     it ".deactivate_items" do
       merchant = create(:random_merchant)
-      item = create(:random_item, merchant_id: merchant.id)
+      item = create(:random_item, merchant_id: merchant.id, active?: false)
       item_2 = create(:random_item, merchant_id: merchant.id)
 
       merchant.deactivate_items
