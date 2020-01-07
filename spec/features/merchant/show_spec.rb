@@ -20,15 +20,15 @@ RSpec.describe 'As a merchant admin/user' do
      
       expect(current_path).to eq("/merchant/items/new")
       fill_in :name, with: "FIGX x New Balance 996"
-      binding.pry
       fill_in :price, with: 100
       fill_in :image, with: "https://cdn.shopify.com/s/files/1/0139/8942/products/Womens_New_Balance_996_black-1_900x900.jpg"
       fill_in :description, with: "Dope biking shoes in black."
       fill_in :inventory, with: 10
 
-      click_button "Create Item"
+      click_on "Create Item"
 
       expect(current_path).to eql("/merchant/items")
+ 
       expect(page).to have_content("You have successfully added an item!")
 
       new_item = Item.last
