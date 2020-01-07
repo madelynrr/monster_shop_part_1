@@ -4,5 +4,6 @@ class Merchant::DashboardController < Merchant::BaseController
   end
 
   def show
+    @merchant = current_user.merchant
   end
 end
