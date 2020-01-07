@@ -12,5 +12,8 @@
     <p>Inactive</p>
   <% end %>
   <%= item.inventory %>
-<% end %>
+  <% if item.no_orders? %>
+    <%= link_to "Delete Item", "/items/#{item.id}", method: :delete %>
+  <% end %>
 </section>
+<% end %>
