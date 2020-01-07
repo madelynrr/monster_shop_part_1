@@ -121,9 +121,63 @@ RSpec.describe 'As an Admin' do
       expect(page).to have_button "Disable Merchant"
     end
 
-
     expect(merchant_disabled.enabled?).to be_truthy
     expect(page).to have_content("You have enabled #{merchant_disabled.name}")
+  end
 
+  it "disables a merchant's items if the merchant is disabled" do
+    admin = create(:random_user, role: 1)
+    merchant = create(:random_merchant)
+    merchant_2 = create(:random_merchant)
+    item = create(:random_item, merchant_id: merchant.id)
+    item_2 = create(:random_item, merchant_id: merchant_2.id)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit "/merchants"
+
+    within "#merchant-#{merchant.id}" do
+      click_button "Disable Merchant"
+    end
+
+    visit "/items"
+
+    expect(page).not_to have_content(item.name)
+    expect(page).not_to have_css("img[src*='#{item.image}']")
+    expect(page).to have_content(item_2.name)
+    expect(page).to have_css("img[src*='#{item_2.image}']")
+
+    item.reload
+    item_2.reload
+
+    expect(item.active?).to eq(false)
+    expect(item_2.active?).to eq(true)
+  end
+
+  it "enables a merchant's items if merchant is enabled" do
+    admin = create(:random_user, role: 1)
+    merchant = create(:random_merchant, status: 1)
+    merchant_2 = create(:random_merchant)
+    item = create(:random_item, merchant_id: merchant.id, active?: false)
+    item_2 = create(:random_item, merchant_id: merchant_2.id)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit "/merchants"
+
+    within "#merchant-#{merchant.id}" do
+      click_button "Enable Merchant"
+    end
+
+    item.reload
+    item_2.reload
+
+    visit "/items"
+
+    expect(page).to have_content(item_2.name)
+    expect(page).to have_content(item.name)
+
+    expect(item.active?).to eq(true)
+    expect(item_2.active?).to eq(true)
   end
 end

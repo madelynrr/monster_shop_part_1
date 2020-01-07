@@ -31,8 +31,23 @@ class Merchant < ApplicationRecord
   def toggle_status
     if enabled?
       update(status: 1)
+      deactivate_items
     elsif disabled?
       update(status: 0)
+      activate_items
     end
   end
+
+  def deactivate_items
+    items.each do |item|
+      item.update(active?: false)
+    end
+  end
+
+  def activate_items
+    items.each do |item|
+      item.update(active?: true)
+    end
+  end
+
 end
