@@ -34,6 +34,7 @@ RSpec.describe 'merchant show page', type: :feature do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant_user)
 
       visit "/merchant/items"
+      save_and_open_page
       within "#item-#{item_1.id}" do
         expect(page).to have_content(item_1.name)
         expect(page).to have_content(item_1.description)
@@ -53,7 +54,45 @@ RSpec.describe 'merchant show page', type: :feature do
       end
 
       expect(page).to_not have_css("#item-#{item_3.id}")
-    end 
+    end
+
+    it 'has button to deactive an item next to each item' do
+
+      merchant_user = create(:random_user, merchant_id: @bike_shop.id, role: 3)
+
+      item_1 = create(:random_item, merchant_id: @bike_shop.id)
+      item_2 = create(:random_item, merchant_id: @bike_shop.id)
+      item_3 = create(:random_item, merchant_id: @bike_shop.id, active?: false)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant_user)
+
+      within "#item-#{item_1.id}" do
+        expect(page).to have_button("Deactivate")
+      end
+
+      within "#item-#{item_3.id}" do
+        expect(page).to_not have_button("Deactivate")
+      end
+
+      within "#item-#{item_2.id}" do
+        click_button("Deactivate")
+      end
+
+      expect(current_path).to eq("/merchant/items")
+      expect(page).to have_content("#{item_2.name} is deactivated")
+
+      within "#item-#{item_1.id}" do
+        expect(page).to have_content("Active")
+      end
+
+      within "#item-#{item_2.id}" do
+        expect(page).to have_content("Inactive")
+      end
+
+      within "#item-#{item_3.id}" do
+        expect(page).to have_content("Inactive")
+      end
+
+    end
 
   end
 end
