@@ -1,10 +1,12 @@
 <h1>Merchant Items Page</h1>
 
-<% @merchant.items.each do |item| %>
+<%= link_to "Add New Item", "/merchant/items/new"%>
+
+<%= @items.each do |item| %>
 <section id="item-<%=item.id%>">
   <%=  item.name %>
   <%=  item.description %>
-  <%=  item.price %>
+  Price: <%=  number_to_currency(item.price) %>
   <%=  image_tag(item.image) %>
   <% if item.active? %>
     <p>Active</p>
@@ -13,7 +15,7 @@
     <p>Inactive</p>
     <%= button_to "Activate", "/merchant/items/#{item.id}", method: :patch %>
   <% end %>
-  <%= item.inventory %>
+  Inventory: <%= item.inventory %>
   <% if item.no_orders? %>
     <%= link_to "Delete Item", "/merchant/items/#{item.id}", method: :delete %>
   <% end %>

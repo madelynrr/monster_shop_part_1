@@ -25,11 +25,6 @@ class Merchant::DashboardController < Merchant::BaseController
     @items = Merchant.find(current_user.merchant.id).items
   end
 
-private 
-  def item_params
-    params.permit(:name,:description,:price,:inventory,:image)
-  end
-
   def update
     item = Item.find(params[:id])
     item.toggle_active_status
@@ -41,4 +36,8 @@ private
     redirect_to '/merchant/items'
   end
 
+private 
+  def item_params
+    params.permit(:name,:description,:price,:inventory,:image)
+  end
 end
