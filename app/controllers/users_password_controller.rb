@@ -14,4 +14,8 @@ class UsersPasswordController < ApplicationController
         end
     end
 
-end 
+private 
+    def user_params
+    params.permit(:name, :address, :city, :state, :zip_code, :email, :password, :password_confirmation)
+    end
+end
