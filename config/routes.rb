@@ -59,11 +59,11 @@ Rails.application.routes.draw do
     get '/profile', to: 'users#index'
     patch '/orders/:id', to: 'dashboard#update'
     get '/orders/:id', to: 'orders#show'
-    get '/items', to: 'dashboard#show'
-    get '/items/new', to: 'dashboard#new'
-    post '/items', to: 'dashboard#create'
+    get '/items', to: 'items#show'
+    get '/items/new', to: 'items#new'
+    post '/items', to: 'items#create'
     delete '/items/:id', to: 'items#destroy'
-    patch 'items/:id', to: 'dashboard#update'
+    patch 'items/:id', to: 'items#update'
   end
 
   namespace :admin do
