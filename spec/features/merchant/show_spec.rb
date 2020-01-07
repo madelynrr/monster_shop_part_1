@@ -12,26 +12,60 @@ RSpec.describe 'As a merchant admin/user' do
   end
   describe "When I visit my items page" do
 
-    it "can add new items to sell in my store" do 
+    it "can add new items to sell in my store with image added" do 
 
       visit "/merchant/items"
       
       click_on "Add New Item"
-      binding.pry
-
+     
       expect(current_path).to eq("/merchant/items/new")
-      fill_in :name, with: new_item.name 
+      fill_in :name, with: "FIGX x New Balance 996"
       binding.pry
-      fill_in :price, with: price
-      fill_in :description, with: description
-      fill_in :image, with: image_url
-      fill_in :inventory, with: inventory
+      fill_in :price, with: 100
+      fill_in :image, with: "https://cdn.shopify.com/s/files/1/0139/8942/products/Womens_New_Balance_996_black-1_900x900.jpg"
+      fill_in :description, with: "Dope biking shoes in black."
+      fill_in :inventory, with: 10
 
       click_button "Create Item"
 
+      expect(current_path).to eql("/merchant/items")
+      expect(page).to have_content("You have successfully added an item!")
+
       new_item = Item.last
-  
+
+      expect(page).to have_content("FIG x New Balance 996")
+      expect(page).to have_content("Dope biking shoes in black.")
+      expect(page).to have_content("Inventory: 10")
+      expect(page).to have_content("You have successfully added an item!")
+      expect(page).to have_css("img[src*='https://cdn.shopify.com/s/files/1/0139/8942/products/Womens_New_Balance_996_black-1_900x900.jpg']")
+
+    end
+
+    it "can add new items to sell in my store with no image added" do 
+
+      visit "/merchant/items"
+      
+      click_on "Add New Item"
+     
+      expect(current_path).to eq("/merchant/items/new")
+      fill_in :name, with: "Pearl Izumi Winter Bike Gloves"
+      fill_in :price, with: 95
+      fill_in :description, with: "Whether battling wintertime chill on a fatbike in Minnesota, or tackling a frigid Colorado cyclocross race in late December, this is our warmest winter glove."
+      fill_in :inventory, with: 5
+
+      click_button "Create Item"
+
+      expect(current_path).to eql("/merchant/items")
+      expect(page).to have_content("You have successfully added an item!")
+
+      new_item = Item.last
+
+      expect(page).to have_content("Pearl Izumi Winter Bike Gloves")
+      expect(page).to have_content("Whether battling wintertime chill on a fatbike in Minnesota, or tackling a frigid Colorado cyclocross race in late December, this is our warmest winter glove.")
+      expect(page).to have_content("Price: 95")
+      expect(page).to have_content("Inventory: 5")
+      expect(page).to have_css("img[src*='https://literalminded.files.wordpress.com/2010/11/image-unavailable1.png']")
+    
     end
   end
 end
-
