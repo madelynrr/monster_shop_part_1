@@ -4,6 +4,10 @@ class Admin::MerchantsController < Admin::BaseController
     @merchant = Merchant.find(params[:id])
   end
 
+  def index
+    @merchants = Merchant.all
+  end
+
   def update
     merchant = Merchant.find(params[:id])
     merchant.toggle_status
@@ -12,7 +16,7 @@ class Admin::MerchantsController < Admin::BaseController
     else
       flash[:success] = "You have disabled #{merchant.name}"
     end
-    redirect_to '/merchants'
+    redirect_to '/admin/merchants'
   end
 
 end
