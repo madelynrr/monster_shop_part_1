@@ -14,13 +14,13 @@ RSpec.describe 'As a merchant' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant_user)
 
       visit "/merchant/items"
-
+      
       within "#item-#{item_1.id}" do
-        expect(page).to_not have_button("Delete")
+        expect(page).not_to have_link("Delete Item")
       end
 
       within "#item-#{item_2.id}" do
-        expect(page).to have_button("Delete")
+        expect(page).to have_link("Delete Item")
       end
 
     end
