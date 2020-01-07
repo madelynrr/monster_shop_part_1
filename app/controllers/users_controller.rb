@@ -27,34 +27,17 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
   end
 
-  def password_edit
-  end
-
   def update
     @user = User.find(session[:user_id])
-    if params.include?(:password)
-      update_password
-    else
       @user.update(user_params)
       update_profile
-    end
   end
+
 
 
   private
   def user_params
     params.permit(:name, :address, :city, :state, :zip_code, :email, :password, :password_confirmation)
-  end
-
-  def update_password
-    if params[:password] == params[:password_confirmation]
-      current_user.update(user_params)
-      redirect_to "/profile"
-      flash[:notice] = "Your password has been updated."
-    elsif params[:password] != params[:password_confirmation]
-      redirect_to "/user/password/edit"
-      flash[:error] = "Password and password confirmation do not match."
-    end
   end
 
   def update_profile

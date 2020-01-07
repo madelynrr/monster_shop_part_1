@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     patch '/merchants/:id', to: 'merchants#update'
   end
 
-  get '/user/password/edit', to: 'users#password_edit'
+  get '/user/password/edit', to: 'users_password#edit'
+  patch '/user/password/update', to: 'users_password#update'
   patch '/user/id', to: 'users#update'
 end
