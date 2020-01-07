@@ -38,7 +38,8 @@ RSpec.describe 'As a merchant' do
 
       expect(current_path).to eq("/merchant/items")
       expect(page).to have_content("You deleted #{@item_2.name}")
-      expect(page).to_not have_css("#item-#{@item_2.id}")
+      expect(page).to_not have_content(@item_2.name)
+      expect(page).to_not have_content(@item_2.inventory)
     end
   end
 end
