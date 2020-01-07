@@ -40,7 +40,7 @@ RSpec.describe 'As an Admin' do
 
     click_button "Login"
 
-    visit "/merchants"
+    visit "/admin/merchants"
     click_on("#{merchant.name}")
     expect(current_path).to eql("/admin/merchants/#{merchant.id}")
 
@@ -70,7 +70,7 @@ RSpec.describe 'As an Admin' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    visit '/merchants'
+    visit '/admin/merchants'
 
     within "#merchant-#{merchant_disabled.id}" do
       expect(page).to_not have_button('Disable Merchant')
@@ -80,7 +80,7 @@ RSpec.describe 'As an Admin' do
       click_button('Disable Merchant')
     end
 
-    expect(current_path).to eq('/merchants')
+    expect(current_path).to eq('/admin/merchants')
 
     within "#merchant-#{merchant_enabled.id}" do
       expect(page).to_not have_button('Disable Merchant')
@@ -108,7 +108,7 @@ RSpec.describe 'As an Admin' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    visit '/merchants'
+    visit '/admin/merchants'
 
     within "#merchant-#{merchant_disabled.id}" do
       click_button "Enable Merchant"
@@ -134,7 +134,7 @@ RSpec.describe 'As an Admin' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    visit "/merchants"
+    visit "/admin/merchants"
 
     within "#merchant-#{merchant.id}" do
       click_button "Disable Merchant"
@@ -163,7 +163,7 @@ RSpec.describe 'As an Admin' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    visit "/merchants"
+    visit "/admin/merchants"
 
     within "#merchant-#{merchant.id}" do
       click_button "Enable Merchant"
