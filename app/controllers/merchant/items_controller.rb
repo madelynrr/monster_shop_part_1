@@ -5,8 +5,8 @@ class Merchant::ItemsController < Merchant::BaseController
 
   def show
     @items = Merchant.find(current_user.merchant.id).items
-  end 
-  
+  end
+
   def create
     merchant = Merchant.find(current_user.merchant.id)
     item = merchant.items.create(item_params)
@@ -23,14 +23,14 @@ class Merchant::ItemsController < Merchant::BaseController
   end
 
   def update
-    item = Item.find(params[:id])
-    item.toggle_active_status
-    if item.active?
-      flash[:success] = "#{item.name} is Activated"
+    @item = Item.find(params[:id])
+    if params[:commit]
+      @item.update(item_params)
+      edit_item_info(@item)
     else
-      flash[:success] = "#{item.name} is deactivated"
+      @item.toggle_active_status
+      toggle_active_with_flash(@item)
     end
-    redirect_to '/merchant/items'
   end
 
 
@@ -42,10 +42,33 @@ class Merchant::ItemsController < Merchant::BaseController
     redirect_to "/merchant/items"
   end
 
-  private 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  private
 
   def item_params
     params.permit(:name,:description,:price,:inventory,:image)
+  end
+
+  def toggle_active_with_flash(item)
+    if item.active?
+      flash[:success] = "#{item.name} is Activated"
+    else
+      flash[:success] = "#{item.name} is deactivated"
+    end
+    redirect_to '/merchant/items'
+  end
+
+  def edit_item_info(item)
+    if item.save
+      flash[:success] = "Your item has been updated."
+      redirect_to '/merchant/items'
+    else
+      flash[:error] = item.errors.full_messages.to_sentence
+      render :edit
+    end
   end
 
 end

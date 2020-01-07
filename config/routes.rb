@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     post '/items', to: 'items#create'
     delete '/items/:id', to: 'items#destroy'
     patch 'items/:id', to: 'items#update'
+    get '/items/:id/edit', to: 'items#edit'
   end
 
   namespace :admin do
