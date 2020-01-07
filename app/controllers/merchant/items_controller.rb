@@ -38,4 +38,10 @@ class Merchant::ItemsController < Merchant::BaseController
     redirect_to "/merchant/items"
   end
 
+  private 
+  
+  def item_params
+    params.permit(:name,:description,:price,:inventory,:image)
+  end
+
 end
