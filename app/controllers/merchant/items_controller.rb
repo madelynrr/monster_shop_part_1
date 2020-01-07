@@ -48,6 +48,8 @@ class Merchant::ItemsController < Merchant::BaseController
 
   def update
     @item = Item.find(params[:id])
+  end
+  
   private
 
   def item_params
