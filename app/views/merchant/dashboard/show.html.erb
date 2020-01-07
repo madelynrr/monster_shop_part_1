@@ -8,6 +8,7 @@
   <%=  image_tag(item.image) %>
   <% if item.active? %>
     <p>Active</p>
+    <%= button_to "Deactivate", "/merchant/items/#{item.id}", method: :patch %>
   <% else %>
     <p>Inactive</p>
   <% end %>
