@@ -29,7 +29,7 @@ RSpec.describe 'As a merchant admin/user' do
       click_on "Add New Item"
      
       expect(current_path).to eq("/merchant/items/new")
-      fill_in :name, with: "FIGX x New Balance 996"
+      fill_in :name, with: "FIG x New Balance 996"
       fill_in :price, with: 100
       fill_in :image, with: "https://cdn.shopify.com/s/files/1/0139/8942/products/Womens_New_Balance_996_black-1_900x900.jpg"
       fill_in :description, with: "Dope biking shoes in black."
