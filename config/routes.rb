@@ -61,7 +61,7 @@ Rails.application.routes.draw do
     get '/orders/:id', to: 'orders#show'
     get '/items', to: 'dashboard#show'
     get '/items/new', to: 'dashboard#new'
-    post '/items', to: 'dashboard#create'
+    post '/items', to: 'items#create'
     delete '/items/:id', to: 'items#destroy'
     patch 'items/:id', to: 'dashboard#update'
   end
