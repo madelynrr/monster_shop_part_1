@@ -6,7 +6,7 @@
 <%= current_user.merchant.zip %></p>
 <%= link_to "See My Items", "/merchant/items" %>
 
-<% current_user.merchant.orders.distinct.each do |order| %>
+<% @orders.each do |order| %>
 <% if order.current_status == "pending" %>
 <section id = "pending-<%= order.id %>">
   <p>ID: <%= link_to "#{order.id}", "/merchant/orders/#{order.id}" %></p>
