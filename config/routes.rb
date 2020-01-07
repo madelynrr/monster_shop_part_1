@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     patch '/orders/:id', to: 'dashboard#update'
     get '/orders/:id', to: 'orders#show'
     get '/items', to: 'dashboard#show'
+    delete '/items/:id', to: 'items#destroy'
   end
 
   namespace :admin do
