@@ -3,6 +3,10 @@ class Merchant::ItemsController < Merchant::BaseController
   def new
   end
 
+  def show
+    @items = Merchant.find(current_user.merchant.id).items
+  end 
+  
   def create
     merchant = Merchant.find(current_user.merchant.id)
     item = merchant.items.create(item_params)
@@ -39,7 +43,7 @@ class Merchant::ItemsController < Merchant::BaseController
   end
 
   private 
-  
+
   def item_params
     params.permit(:name,:description,:price,:inventory,:image)
   end
