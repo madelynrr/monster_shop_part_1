@@ -1,1 +1,16 @@
-<h1>Merchant Items Page </h1>
+<h1>Merchant Items Page</h1>
+
+<% @merchant.items.each do |item| %>
+<section id="item-<%=item.id%>">
+  <%=  item.name %>
+  <%=  item.description %>
+  <%=  item.price %>
+  <%=  image_tag(item.image) %>
+  <% if item.active? %>
+    <p>Active</p>
+  <% else %>
+    <p>Inactive</p>
+  <% end %>
+  <%= item.inventory %>
+<% end %>
+</section>
