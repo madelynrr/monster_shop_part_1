@@ -13,20 +13,20 @@ RSpec.describe 'As a merchant admin/user' do
         @merchant_2 = create(:random_merchant)
         @item_2 = create(:random_item, merchant: @merchant_2)
 
+        visit '/'
+
+        click_link "Login"
+    
+        fill_in :email, with: @merchant_admin.email
+        fill_in :password, with: @merchant_admin.password
+    
+        click_button "Login"
+
+        visit "/merchant/items"
+
     end 
 
   it "can add new items to sell in my store with image added" do 
-
-    visit '/'
-
-    click_link "Login"
-
-    fill_in :email, with: @merchant_admin.email
-    fill_in :password, with: @merchant_admin.password
-
-    click_button "Login"
-
-    visit "/merchant/items"
     
     click_on "Add New Item"
    
@@ -58,16 +58,6 @@ RSpec.describe 'As a merchant admin/user' do
   end
 
   it "can add new items to sell in my store with no image added" do 
-    visit '/'
-
-    click_link "Login"
-
-    fill_in :email, with: @merchant_admin.email
-    fill_in :password, with: @merchant_admin.password
-
-    click_button "Login"
-
-    visit "/merchant/items"
     
     click_on "Add New Item"
    
@@ -91,4 +81,21 @@ RSpec.describe 'As a merchant admin/user' do
     expect(page).to have_css("img[src*='https://literalminded.files.wordpress.com/2010/11/image-unavailable1.png']")
   
   end
+
+  it "cannot add an item is details are bad/missing" do 
+
+    click_on "Add New Item"
+   
+    expect(current_path).to eq("/merchant/items/new")
+    fill_in :name, with: "Pearl Izumi Winter Bike Gloves"
+    fill_in :price, with: " "
+    fill_in :description, with: "Whether battling wintertime chill on a fatbike in Minnesota, or tackling a frigid Colorado cyclocross race in late December, this is our warmest winter glove."
+    fill_in :inventory, with: " "
+
+    click_button "Create Item"
+
+    expect(find_field(:name).value).to eq("Pearl Izumi Winter Bike Gloves")
+    expect(find_field(:description).value).to eq("Whether battling wintertime chill on a fatbike in Minnesota, or tackling a frigid Colorado cyclocross race in late December, this is our warmest winter glove.")
+
+  end 
 end 
