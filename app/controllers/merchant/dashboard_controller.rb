@@ -10,7 +10,11 @@ class Merchant::DashboardController < Merchant::BaseController
   def update
     item = Item.find(params[:id])
     item.toggle_active_status
-    flash[:success] = "#{item.name} is deactivated"
+    if item.active?
+      flash[:success] = "#{item.name} is Activated"
+    else
+      flash[:success] = "#{item.name} is deactivated"
+    end 
     redirect_to '/merchant/items'
   end
 
