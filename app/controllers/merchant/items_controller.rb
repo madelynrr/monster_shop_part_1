@@ -8,4 +8,12 @@ class Merchant::ItemsController < Merchant::BaseController
     redirect_to "/merchant/items"
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+  end
+
 end
