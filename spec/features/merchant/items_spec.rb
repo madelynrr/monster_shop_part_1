@@ -36,10 +36,11 @@ RSpec.describe 'As a merchant' do
         click_link "Delete Item"
       end
 
+      @merchant.reload
+
       expect(current_path).to eq("/merchant/items")
       expect(page).to have_content("You deleted #{@item_2.name}")
-      expect(page).to_not have_content(@item_2.name)
-      expect(page).to_not have_content(@item_2.inventory)
+      expect(page).to_not have_css("#item-#{@item_2.id}")
     end
   end
 end
