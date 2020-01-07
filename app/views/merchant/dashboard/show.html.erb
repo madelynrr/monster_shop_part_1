@@ -13,7 +13,7 @@
   <% end %>
   <%= item.inventory %>
   <% if item.no_orders? %>
-    <%= link_to "Delete Item", "/items/#{item.id}", method: :delete %>
+    <%= link_to "Delete Item", "/merchant/items/#{item.id}", method: :delete %>
   <% end %>
 </section>
 <% end %>
