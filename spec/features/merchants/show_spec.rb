@@ -87,18 +87,6 @@ RSpec.describe 'merchant show page', type: :feature do
       expect(item_2.active?).to eq(false)
       expect(item_3.active?).to eq(false)
 
-      # within "#item-#{item_1.id}" do
-      #   expect(page).to have_content("Active")
-      # end
-
-      # within "#item-#{item_2.id}" do
-      #   expect(page).to have_content("Inactive")
-      # end
-      #
-      # within "#item-#{item_3.id}" do
-      #   expect(page).to have_content("Inactive")
-      # end
-
     end
     it 'can activate a deactivated item' do
       merchant_user = create(:random_user, merchant_id: @bike_shop.id, role: 3)
@@ -130,7 +118,6 @@ RSpec.describe 'merchant show page', type: :feature do
       expect(item_1.active?).to eq(true)
       expect(item_2.active?).to eq(false)
       expect(item_3.active?).to eq(true)
-
 
     end
   end
