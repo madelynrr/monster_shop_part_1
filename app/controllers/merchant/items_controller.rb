@@ -28,8 +28,8 @@ class Merchant::ItemsController < Merchant::BaseController
       @item.update(item_params)
       edit_item_info(@item)
     else
-      item.toggle_active_status
-      toggle_active_with_flash(item)
+      @item.toggle_active_status
+      toggle_active_with_flash(@item)
     end
   end
 
