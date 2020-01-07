@@ -5,6 +5,21 @@ class Merchant::DashboardController < Merchant::BaseController
   def new
   end 
 
+  def create 
+    item = Item.create(item_params)
+      if item.save
+        redirect_to "/merchant/items"
+      else
+        flash[:error] = item.errors.full_messages.to_sentence
+        render :new
+      end
+  end 
+
   def show
   end
+
+private 
+def item_params
+  params.permit(:name,:description,:price,:inventory,:image)
+end
 end
