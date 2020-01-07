@@ -60,6 +60,8 @@ Rails.application.routes.draw do
     patch '/orders/:id', to: 'dashboard#update'
     get '/orders/:id', to: 'orders#show'
     get '/items', to: 'dashboard#show'
+    get '/items/new', to: 'dashboard#new'
+    post '/items', to: 'dashboard#create'
     delete '/items/:id', to: 'items#destroy'
     patch 'items/:id', to: 'dashboard#update'
   end
