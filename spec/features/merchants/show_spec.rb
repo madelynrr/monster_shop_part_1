@@ -86,7 +86,7 @@ RSpec.describe 'merchant show page', type: :feature do
       expect(item_1.active?).to eq(true)
       expect(item_2.active?).to eq(false)
       expect(item_3.active?).to eq(false)
-      
+
       # within "#item-#{item_1.id}" do
       #   expect(page).to have_content("Active")
       # end
@@ -100,6 +100,38 @@ RSpec.describe 'merchant show page', type: :feature do
       # end
 
     end
+    it 'can activate a deactivated item' do
+      merchant_user = create(:random_user, merchant_id: @bike_shop.id, role: 3)
 
+      item_1 = create(:random_item, merchant_id: @bike_shop.id)
+      item_2 = create(:random_item, merchant_id: @bike_shop.id, active?: false)
+      item_3 = create(:random_item, merchant_id: @bike_shop.id, active?: false)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant_user)
+
+      visit '/merchant/items'
+
+      within "#item-#{item_1.id}" do
+        expect(page).not_to have_button("Activate")
+      end
+
+      within "#item-#{item_2.id}" do
+        expect(page).to have_button("Activate")
+      end
+
+      within "#item-#{item_3.id}" do
+        click_button("Activate")
+      end
+
+      expect(current_path).to eq("/merchant/items")
+      expect(page).to have_content("#{item_3.name} is Activated")
+      item_1.reload
+      item_2.reload
+      item_3.reload
+      expect(item_1.active?).to eq(true)
+      expect(item_2.active?).to eq(false)
+      expect(item_3.active?).to eq(true)
+
+
+    end
   end
 end
