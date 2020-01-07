@@ -64,6 +64,8 @@ RSpec.describe 'merchant show page', type: :feature do
       item_3 = create(:random_item, merchant_id: @bike_shop.id, active?: false)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant_user)
 
+      visit '/merchant/items'
+
       within "#item-#{item_1.id}" do
         expect(page).to have_button("Deactivate")
       end
