@@ -23,5 +23,37 @@ RSpec.describe 'merchant show page', type: :feature do
       expect(current_path).to eq("/merchants/#{@bike_shop.id}/items")
     end
 
+    it 'displays that merchants items' do
+      merchant_user = create(:random_user, merchant_id: @bike_shop.id, role: 3)
+      merchant = create(:random_merchant)
+
+      item_1 = create(:random_item, merchant_id: @bike_shop.id)
+      item_2 = create(:random_item, merchant_id: @bike_shop.id)
+      item_3 = create(:random_item, merchant_id: merchant.id)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant_user)
+
+      visit "/merchant/items"
+      within "#item-#{item_1.id}" do
+        expect(page).to have_content(item_1.name)
+        expect(page).to have_content(item_1.description)
+        expect(page).to have_content(item_1.price)
+        expect(page).to have_content("Active")
+        expect(page).to have_content(item_1.inventory)
+        expect(page).to have_css("img[src*='#{item_1.image}']")
+      end
+
+      within "#item-#{item_2.id}" do
+        expect(page).to have_content(item_2.name)
+        expect(page).to have_content(item_2.description)
+        expect(page).to have_content(item_2.price)
+        expect(page).to have_content("Active")
+        expect(page).to have_content(item_2.inventory)
+        expect(page).to have_css("img[src*='#{item_2.image}']")
+      end
+
+      expect(page).to_not have_css("#item-#{item_3.id}")
+    end 
+
   end
 end
