@@ -11,6 +11,7 @@
     <%= button_to "Deactivate", "/merchant/items/#{item.id}", method: :patch %>
   <% else %>
     <p>Inactive</p>
+    <%= button_to "Activate", "/merchant/items/#{item.id}", method: :patch %>
   <% end %>
   <%= item.inventory %>
 </section>
