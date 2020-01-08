@@ -7,8 +7,8 @@ RSpec.describe 'As a merchant employee/admin' do
     merchant_employee = create(:random_user, role: 3, merchant_id: merchant.id)
     @user = create(:random_user)
 
-    @item_1 = create(:random_item, merchant_id: merchant.id)
-    @item_2 = create(:random_item, merchant_id: merchant.id)
+    @item_1 = create(:random_item, merchant_id: merchant.id, inventory: 10)
+    @item_2 = create(:random_item, merchant_id: merchant.id, inventory: 2)
     @item_3 = create(:random_item, merchant_id: merchant2.id)
 
     @order = create(:random_order, user_id: @user.id)
@@ -72,4 +72,42 @@ RSpec.describe 'As a merchant employee/admin' do
 
     expect(current_path).to eq("/items/#{@item_1.id}")
   end
+
+  it "shows a button to fulfill the item if order quantity is less than inventory quantity" do
+    visit "/merchant/orders/#{@order.id}"
+
+    within "#item-#{@item_1.id}" do
+      expect(page).to have_button("Fulfill")
+    end
+
+    within "#item-#{@item_2.id}" do
+      expect(page).not_to have_button("Fulfill")
+    end
+  end
+
+  it 'fulfills the item and takes me back to the order show page' do
+    visit "/merchant/orders/#{@order.id}"
+
+    within "#item-#{@item_1.id}" do
+      click_button ("Fulfill")
+    end
+
+    expect(current_path).to eq("/merchant/orders/#{@order.id}")
+
+    within "#item-#{@item_1.id}" do
+      expect(page).not_to have_button("Fulfill")
+    end
+
+    @item_1.reload
+
+    item = Item.find(@item_1.id)
+
+    expect(page).to have_content("You have fulfilled order for #{@item_1.name}")
+    expect(item.inventory).to eq(5)
+
+    within "#item-#{@item_1.id}" do
+      expect(page).to have_content("This item is fulfilled for this order")
+    end
+  end
+
 end

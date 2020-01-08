@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   namespace :merchant do
     get '/', to: 'dashboard#index'
     get '/profile', to: 'users#index'
-    patch '/orders/:id', to: 'dashboard#update'
+    patch '/item_orders/:id', to: 'item_orders#update'
     get '/orders/:id', to: 'orders#show'
     get '/items', to: 'items#show'
     get '/items/new', to: 'items#new'

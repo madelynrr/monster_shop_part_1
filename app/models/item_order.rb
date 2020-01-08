@@ -9,4 +9,8 @@ class ItemOrder <ApplicationRecord
   def subtotal
     price * quantity
   end
+
+  def unfulfilled_item_order
+    quantity <= item.inventory && unfulfilled?
+  end
 end

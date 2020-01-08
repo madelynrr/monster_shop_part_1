@@ -12,5 +12,11 @@
     <%= image_tag(item_order.item.image) %></br></br>
     <%= number_to_currency(item_order.item.price) %>
     <p>Quantity: <%= item_order.quantity %></p>
+    <% if item_order.unfulfilled_item_order %>
+      <%= button_to "Fulfill", "/merchant/item_orders/#{item_order.id}", method: :patch %>
+      <%# <%= button_to "Fulfill", "/merchant/orders/#{@order.id}", method: :patch, params: {id: item_order.id} %> %>
+    <% elsif item_order.fulfilled? %>
+      <%= "This item is fulfilled for this order" %>
+    <% end %>
   </section>
 <% end %>
