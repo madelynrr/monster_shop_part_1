@@ -50,4 +50,8 @@ class Merchant < ApplicationRecord
     end
   end
 
+  def item_orders_for(order)
+    item_orders.where("item_orders.order_id = #{order.id}")
+  end
+
 end
