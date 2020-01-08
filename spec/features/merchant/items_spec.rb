@@ -76,5 +76,22 @@ RSpec.describe 'As a merchant' do
         expect(page).to have_content("Wheel")
       end
     end
+
+    it "cannot edit an item if details are bad/missing" do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merchant_user)
+
+      visit "/merchant/items/#{@item_1.id}/edit"
+
+      fill_in "Name", with: ""
+      fill_in "Description", with: "Fancy thing"
+      fill_in 'Price', with: 12
+      fill_in 'Image', with: ""
+      fill_in 'Inventory', with: 11
+
+      click_button "Update Item"
+
+      expect(page).to have_content("Name can't be blank")
+
+    end
   end
 end
