@@ -6,10 +6,11 @@
       <%= @order.user.state %>
       <%= @order.user.zip_code %></h3>
 
-<% @order.items.each do |item| %>
-<section id="item-<%= item.id%>">
-  <%= item.name %>
-  <%= image_tag(item.image) %>
-  <%= item.price %>
-</section>
-  <% end %>
+<% current_user.merchant.item_orders_for(@order).each do |item_order| %>
+  <section id="item-<%= item_order.item.id %>">
+    <%= link_to item_order.item.name, "/items/#{item_order.item.id}" %>
+    <%= image_tag(item_order.item.image) %>
+    <%= item_order.item.price %>
+    <p>Quantity: <%= item_order.quantity %></p>
+  </section>
+<% end %>
