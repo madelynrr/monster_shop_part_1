@@ -51,7 +51,7 @@ class Merchant < ApplicationRecord
   end
 
   def item_orders_for(order)
-    require 'pry', binding.pry
+    item_orders.where("item_orders.order_id = #{order.id}")
   end
 
 end
