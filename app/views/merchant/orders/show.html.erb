@@ -12,5 +12,8 @@
     <%= image_tag(item_order.item.image) %></br></br>
     <%= number_to_currency(item_order.item.price) %>
     <p>Quantity: <%= item_order.quantity %></p>
+    <% if item_order.quantity < item_order.item.inventory %>
+      <%= button_to "Fulfill" %>
+    <% end %>
   </section>
 <% end %>
