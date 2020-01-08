@@ -74,9 +74,6 @@ RSpec.describe 'As a merchant employee/admin' do
   end
 
   it "shows a button to fulfill the item if order quantity is less than inventory quantity" do
-    order2 = create(:random_order, user_id: @user.id)
-    item_1_order2 = ItemOrder.create!(item: @item_1, order: order2, price: @item_1.price, quantity: 5)
-
     visit "/merchant/orders/#{@order.id}"
 
     within "#item-#{@item_1.id}" do
@@ -86,6 +83,26 @@ RSpec.describe 'As a merchant employee/admin' do
     within "#item-#{@item_2.id}" do
       expect(page).not_to have_button("Fulfill")
     end
+  end
+
+  it 'fulfills the item and takes me back to the order show page' do
+    visit "/merchant/orders/#{@order.id}"
+
+    within "#item-#{@item_1.id}" do
+      click_button ("Fulfill")
+    end
+
+    expect(current_path).to eq("/merchant/orders/#{@order.id}")
+
+    within "#item-#{@item_1.id}" do
+      expect(page).not_to have_button("Fulfill")
+    end
+
+    @item_1.reload
+
+    expect(page).to have_content("You have fulfilled order for #{@item_1.name}")
+    expect(@item_1.inventory).to eq(5)
 
   end
+
 end
