@@ -6,6 +6,8 @@
       <%= @order.user.state %>
       <%= @order.user.zip_code %></h3>
 
+<section class="grid-container">
+
 <% current_user.merchant.item_orders_for(@order).each do |item_order| %>
   <section id="item-<%= item_order.item.id %>">
     <h4><%= link_to item_order.item.name, "/items/#{item_order.item.id}" %></h4></br>
@@ -22,3 +24,4 @@
     <% end %>
   </section>
 <% end %>
+</section>
