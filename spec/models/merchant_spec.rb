@@ -127,7 +127,6 @@ describe Merchant, type: :model do
     end
 
     it '.item_orders_for' do
-      merchant_user = create(:random_user, role: 3, merchant_id: @meg.id )
       item_1 = create(:random_item, merchant_id: @meg.id)
       order_1 = @user.orders.create!(name: 'Meg', address: '123 Stang Ave', city: 'Hershey', state: 'PA', zip: 17033)
       order_2 = @user.orders.create!(name: 'Brian', address: '123 Brian Ave', city: 'Denver', state: 'CO', zip: 17033)
@@ -135,10 +134,7 @@ describe Merchant, type: :model do
       item_order_2 = order_1.item_orders.create!(item: item_1, price: item_1.price, quantity: 8)
       item_order_3 = order_2.item_orders.create!(item: @tire, price: @tire.price, quantity: 8)
 
-
       expect(@meg.item_orders_for(order_1)).to eq([item_order_1, item_order_2])
-
     end
-
   end
 end
