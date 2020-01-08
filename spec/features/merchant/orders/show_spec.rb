@@ -110,4 +110,12 @@ RSpec.describe 'As a merchant employee/admin' do
     end
   end
 
+  it "shows a notice next to the item that I cannot fulfill if I do not have enough inventory" do
+    visit "/merchant/orders/#{@order.id}"
+
+    within "#item-#{@item_2.id}" do
+      expect(page).not_to have_button("Fulfill")
+      expect(page).to have_content('Not enough inventory to fulfill this order with this item')
+    end
+  end
 end
