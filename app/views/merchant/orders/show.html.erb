@@ -17,6 +17,8 @@
       <%# <%= button_to "Fulfill", "/merchant/orders/#{@order.id}", method: :patch, params: {id: item_order.id} %> %>
     <% elsif item_order.fulfilled? %>
       <%= "This item is fulfilled for this order" %>
+    <% elsif item_order.quantity > item_order.item.inventory %>
+      <%= 'Not enough inventory to fulfill this order with this item' %>
     <% end %>
   </section>
 <% end %>
