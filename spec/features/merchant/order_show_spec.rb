@@ -27,7 +27,6 @@ RSpec.describe 'As a merchant employee/admin' do
     end
 
     expect(current_path).to eq("/merchant/orders/#{@order.id}")
-
   end
 
   it 'sees recipients information on order show page' do
@@ -62,7 +61,15 @@ RSpec.describe 'As a merchant employee/admin' do
     end
 
     expect(page).not_to have_css("#item-#{@item_3.id}")
-
   end
 
+  it "has link for item name to item's show page" do
+    visit "/merchant/orders/#{@order.id}"
+
+    within "#item-#{@item_1.id}" do
+      click_link "#{@item_1.name}"
+    end
+
+    expect(current_path).to eq("/items/#{@item_1.id}")
+  end
 end
