@@ -54,4 +54,5 @@ RSpec.describe 'merchant show page', type: :feature do
 
       expect(page).to_not have_css("#item-#{item_3.id}")
     end
+  end
 end
