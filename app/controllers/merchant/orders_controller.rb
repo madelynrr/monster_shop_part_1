@@ -5,7 +5,6 @@ class Merchant::OrdersController < Merchant::BaseController
   end
 
   def update
-    require 'pry', binding.pry
   end
 
 end
