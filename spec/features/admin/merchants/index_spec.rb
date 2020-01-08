@@ -29,11 +29,17 @@ RSpec.describe 'As an Admin' do
       expect(page).to_not have_button('Disable Merchant')
       expect(page).to have_button('Enable Merchant')
     end
-
-    
   end
+    it "merchants link directs to merchants show page." do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
-end
+      visit "/admin/merchants"
+
+      click_link @merchant_1.name
+
+      expect(current_path).to eq("/admin/merchants/#{@merchant_1.id}")
+    end
+  end
 
 
 # User Story 52, Admin Merchant Index Page
