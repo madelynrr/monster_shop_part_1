@@ -123,7 +123,7 @@ RSpec.describe "As an admin" do
     click_button "Login"
 
     within 'nav' do
-      click_link 'Users'
+      click_link 'All Users'
     end
 
     expect(current_path).to eq("/admin/users")
