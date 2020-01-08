@@ -8,7 +8,7 @@ RSpec.describe 'As a merchant employee/admin' do
     @user = create(:random_user)
 
     @item_1 = create(:random_item, merchant_id: merchant.id, inventory: 10)
-    @item_2 = create(:random_item, merchant_id: merchant.id)
+    @item_2 = create(:random_item, merchant_id: merchant.id, inventory: 2)
     @item_3 = create(:random_item, merchant_id: merchant2.id)
 
     @order = create(:random_order, user_id: @user.id)
@@ -77,5 +77,13 @@ RSpec.describe 'As a merchant employee/admin' do
     order2 = create(:random_order, user_id: @user.id)
     item_1_order2 = ItemOrder.create!(item: @item_1, order: order2, price: @item_1.price, quantity: 5)
 
+    within "#item-#{@item_1.id}" do
+      expect(page).to have_button("Fulfill")
+    end
+
+    within "#item-#{@item_2.id}" do
+      expect(page).not_to have_button("Fulfill")
+    end
+    
   end
 end
