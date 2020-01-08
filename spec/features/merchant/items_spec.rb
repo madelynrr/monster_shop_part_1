@@ -95,14 +95,3 @@ RSpec.describe 'As a merchant' do
     end
   end
 end
-
-
-
-# User Story 48, Merchant cannot edit an item if details are bad/missing
-#
-# As a merchant
-# When I try to edit an existing item
-# If any of my data is incorrect or missing (except image)
-# Then I am returned to the form
-# I see one or more flash messages indicating each error I caused
-# All fields are re-populated with my previous data
