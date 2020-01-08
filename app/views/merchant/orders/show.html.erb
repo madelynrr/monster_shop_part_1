@@ -13,7 +13,7 @@
     <%= number_to_currency(item_order.item.price) %>
     <p>Quantity: <%= item_order.quantity %></p>
     <% if item_order.quantity <= item_order.item.inventory %>
-      <%= button_to "Fulfill", "/merchant/orders/#{@order.id}", method: :patch %>
+      <%= button_to "Fulfill", "/merchant/item_orders/#{item_order.id}", method: :patch %>
     <% end %>
   </section>
 <% end %>
