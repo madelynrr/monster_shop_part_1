@@ -108,4 +108,41 @@ RSpec.describe "As an admin" do
       expect(page).to have_content(order_1.created_at)
     end
   end
+  it 'has all user info and name is link to user show page' do
+    admin = create(:random_user, role: 1)
+    user = create(:random_user, role: 0)
+    user_2 = create(:random_user, role: 0)
+
+    visit '/'
+    click_link "Login"
+    expect(current_path).to eq('/login')
+
+    fill_in :email, with: admin.email
+    fill_in :password, with: admin.password
+
+    click_button "Login"
+
+    within 'nav' do
+      click_link 'Users'
+    end
+
+    expect(current_path).to eq("/admin/users")
+
+    expect(page).to have_content(user.name)
+    expect(page).to have_content(user_2.name)
+
+    within "#users-#{user.id}" do
+      click_link "#{user.name}"
+    end
+
+    expect(current_path).to eq("/admin/users/#{user.id}")
+    visit "/admin/users"
+
+    within "#users-#{user.id}" do
+      expect(page).to have_content("User created at #{user.created_at}")
+      expect(page).to have_content("default")
+    end
+
+  end
+
 end
