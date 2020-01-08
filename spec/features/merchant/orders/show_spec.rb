@@ -77,6 +77,8 @@ RSpec.describe 'As a merchant employee/admin' do
     order2 = create(:random_order, user_id: @user.id)
     item_1_order2 = ItemOrder.create!(item: @item_1, order: order2, price: @item_1.price, quantity: 5)
 
+    visit "/merchant/orders/#{@order.id}"
+
     within "#item-#{@item_1.id}" do
       expect(page).to have_button("Fulfill")
     end
@@ -84,6 +86,6 @@ RSpec.describe 'As a merchant employee/admin' do
     within "#item-#{@item_2.id}" do
       expect(page).not_to have_button("Fulfill")
     end
-    
+
   end
 end
