@@ -7,7 +7,7 @@ RSpec.describe 'As a merchant employee/admin' do
     merchant_employee = create(:random_user, role: 3, merchant_id: merchant.id)
     @user = create(:random_user)
 
-    @item_1 = create(:random_item, merchant_id: merchant.id)
+    @item_1 = create(:random_item, merchant_id: merchant.id, inventory: 10)
     @item_2 = create(:random_item, merchant_id: merchant.id)
     @item_3 = create(:random_item, merchant_id: merchant2.id)
 
@@ -71,5 +71,11 @@ RSpec.describe 'As a merchant employee/admin' do
     end
 
     expect(current_path).to eq("/items/#{@item_1.id}")
+  end
+
+  it "shows a button to fulfill the item if order quantity is less than inventory quantity" do
+    order2 = create(:random_order, user_id: @user.id)
+    item_1_order2 = ItemOrder.create!(item: @item_1, order: order2, price: @item_1.price, quantity: 5)
+
   end
 end
