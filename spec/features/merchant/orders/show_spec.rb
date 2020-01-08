@@ -100,9 +100,14 @@ RSpec.describe 'As a merchant employee/admin' do
 
     @item_1.reload
 
-    expect(page).to have_content("You have fulfilled order for #{@item_1.name}")
-    expect(@item_1.inventory).to eq(5)
+    item = Item.find(@item_1.id)
 
+    expect(page).to have_content("You have fulfilled order for #{@item_1.name}")
+    expect(item.inventory).to eq(5)
+
+    within "#item-#{@item_1.id}" do
+      expect(page).to have_content("This item is fulfilled for this order")
+    end
   end
 
 end
