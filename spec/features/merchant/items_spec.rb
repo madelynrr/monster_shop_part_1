@@ -92,6 +92,16 @@ RSpec.describe 'As a merchant' do
 
       expect(page).to have_content("Name can't be blank")
 
+      fill_in 'Name', with: 'Billy Bob'
+      fill_in 'Price', with: 'kjdnfkdn'
+      click_button 'Update Item'
+
+      expect(page).to have_content('Price is not a number')
+
+      fill_in 'Inventory', with: 'ksdjbfkjsdn'
+      click_button 'Update Item'
+
+      expect(page).to have_content('Inventory is not a number')
     end
   end
 end

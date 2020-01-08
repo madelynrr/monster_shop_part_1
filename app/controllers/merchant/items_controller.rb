@@ -10,8 +10,8 @@ class Merchant::ItemsController < Merchant::BaseController
 
   def show
     @items = Merchant.find(current_user.merchant.id).items
-  end 
-  
+  end
+
   def create
     merchant = Merchant.find(current_user.merchant.id)
     @item = merchant.items.create(item_params)
@@ -27,16 +27,16 @@ class Merchant::ItemsController < Merchant::BaseController
       end
   end
 
-  def update
-    item = Item.find(params[:id])
-    item.toggle_active_status
-    if item.active?
-      flash[:success] = "#{item.name} is Activated"
-    else
-      flash[:success] = "#{item.name} is deactivated"
-    end
-    redirect_to '/merchant/items'
-  end
+  # def update
+  #   item = Item.find(params[:id])
+  #   item.toggle_active_status
+  #   if item.active?
+  #     flash[:success] = "#{item.name} is Activated"
+  #   else
+  #     flash[:success] = "#{item.name} is deactivated"
+  #   end
+  #   redirect_to '/merchant/items'
+  # end
 
 
   def destroy
