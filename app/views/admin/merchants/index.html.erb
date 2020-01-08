@@ -11,6 +11,8 @@
         <% else%>
           <%= button_to 'Enable Merchant', "/admin/merchants/#{merchant.id}", method: :patch %>
         <% end %>
+        <%= merchant.city %>
+        <%= merchant.state %>
         </section>
     </section>
       <% else %>
