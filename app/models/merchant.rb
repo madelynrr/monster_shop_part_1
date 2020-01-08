@@ -50,4 +50,8 @@ class Merchant < ApplicationRecord
     end
   end
 
+  def item_orders_for(order)
+    require 'pry', binding.pry
+  end
+
 end
