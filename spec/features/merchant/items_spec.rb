@@ -42,5 +42,66 @@ RSpec.describe 'As a merchant' do
       expect(page).to have_content("You deleted #{@item_2.name}")
       expect(page).to_not have_css("#item-#{@item_2.id}")
     end
+
+    it "can edit each item" do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merchant_user)
+
+      visit "/merchant/items"
+
+      original_name = @item_1.name
+
+      within "#item-#{@item_1.id}" do
+        click_link 'Edit Item'
+      end
+
+      expect(current_path).to eq("/merchant/items/#{@item_1.id}/edit")
+      expect(find_field("Name").value).to eq(original_name)
+      expect(find_field("Description").value).to eq(@item_1.description)
+      expect(find_field("Price").value).to eq("#{@item_1.price}")
+      expect(find_field("Image").value).to eq(@item_1.image)
+      expect(find_field("Inventory").value).to eq("#{@item_1.inventory}")
+
+      fill_in "Name", with: ""
+      click_button "Update Item"
+
+      expect(page).to have_content("Name can't be blank")
+      fill_in "Name", with: "Wheel"
+      click_button "Update Item"
+
+      expect(current_path).to eq("/merchant/items")
+      expect(page).to have_content("Your item has been updated")
+
+      within "#item-#{@item_1.id}" do
+        expect(page).to_not have_content(original_name)
+        expect(page).to have_content("Wheel")
+      end
+    end
+
+    it "cannot edit an item if details are bad/missing" do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merchant_user)
+
+      visit "/merchant/items/#{@item_1.id}/edit"
+
+      fill_in "Name", with: ""
+      fill_in "Description", with: "Fancy thing"
+      fill_in 'Price', with: 12
+      fill_in 'Image', with: ""
+      fill_in 'Inventory', with: 11
+
+      click_button "Update Item"
+
+      expect(page).to have_content("Name can't be blank")
+
+      fill_in 'Name', with: 'Billy Bob'
+      fill_in 'Price', with: 'kjdnfkdn'
+      click_button 'Update Item'
+
+      expect(page).to have_content('Price is not a number')
+
+      fill_in 'Inventory', with: 'ksdjbfkjsdn'
+      click_button 'Update Item'
+
+      expect(page).to have_content('Inventory is not a number')
+    end
   end
 end
