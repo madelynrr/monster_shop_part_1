@@ -1,1 +1,9 @@
-<h1> User Show Page </h1>
+<h1><%= @user.name %>'s Profile</h1>
+Address: <%= @user.address %></br>
+City: <%= @user.city %></br>
+State: <%= @user.state %></br>
+Zip Code: <%= @user.zip_code %></br>
+Email: <%= @user.email %></br>
+
+<%= link_to "My Orders", "/profile/orders" %>
+<%= link_to "Change Password", "/user/password/edit" %>
