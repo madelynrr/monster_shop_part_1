@@ -5,3 +5,11 @@
   <h3><%= @order.user.city %>
       <%= @order.user.state %>
       <%= @order.user.zip_code %></h3>
+
+<% @order.items.each do |item| %>
+<section id="item-<%= item.id%>">
+  <%= item.name %>
+  <%= image_tag(item.image) %>
+  <%= item.price %>
+</section>
+  <% end %>
