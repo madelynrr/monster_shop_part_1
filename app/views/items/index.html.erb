@@ -5,6 +5,25 @@
   <h1>All Items</h1>
 <% end %>
 
+ <section id="stats">
+    <section id="most-popular">
+      <b>MOST POPULAR ITEMS</b>
+      <ol>
+      <% @items.popularity("desc").each do |item| %>
+          <li><%= "#{item.name}"%> (<%="#{item.quantity}" %> purchased)</li>
+      <% end %>
+    </ol>
+    </section>
+    <section id="least-popular">
+      <p><b>NOT OUR BEST SELLERS </b></p>
+      <ol>
+      <% @items.popularity.each do |item| %>
+          <li><%= "#{item.name}"%> (<%="#{item.quantity}" %> purchased)</li>
+      <% end %>
+    </ol>
+    </section>
+  </section>
+
 <section class="grid-container">
   <% @items.each do |item| %>
     <% if item.active? %>
@@ -23,23 +42,4 @@
     </section>
     <% end %>
   <% end %>
-  </section>
-
-  <section id="stats">
-    <section id="most-popular">
-      <p>Most popular items on the site:</p>
-      <ol>
-      <% @items.popularity("desc").each do |item| %>
-          <li><%= "#{item.name}: #{item.quantity}" %></li>
-      <% end %>
-    </ol>
-    </section>
-    <section id="least-popular">
-      <p>Not our best sellers:</p>
-      <ol>
-      <% @items.popularity.each do |item| %>
-          <li><%= "#{item.name}: #{item.quantity}" %></li>
-      <% end %>
-    </ol>
-    </section>
   </section>
