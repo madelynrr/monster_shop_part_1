@@ -14,9 +14,9 @@ User.destroy_all
 #merchants
 bike_shop = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
 dog_shop = Merchant.create(name: "Brian's Dog Shop", address: '125 Doggo St.', city: 'Denver', state: 'CO', zip: 80210)
-phone_shop = Merchant.create(name: "Daniel's phone Shop", address: '456 Doggo St.', city: 'Denver', state: 'CO', zip: 80220)
-watch_shop = Merchant.create(name: "Danny's Watch Shop", address: '456 puppo St.', city: 'Denver', state: 'CO', zip: 80221)
-liquor_store = Merchant.create(name: "Danny's Liquor store", address: '456 liq St.', city: 'Denver', state: 'CO', zip: 80222)
+phone_shop = Merchant.create(name: "Daniel's Phone Shop", address: '456 Doggo St.', city: 'Denver', state: 'CO', zip: 80220)
+watch_shop = Merchant.create(name: "Danny's Watch Shop", address: '456 Puppo St.', city: 'Denver', state: 'CO', zip: 80221)
+liquor_store = Merchant.create(name: "Danny's Liquor store", address: '456 Liquor St.', city: 'Denver', state: 'CO', zip: 80222)
 
 #bike_shop items
 tire = bike_shop.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
@@ -28,7 +28,7 @@ dog_bone = dog_shop.items.create(name: "Dog Bone", description: "They'll love it
 #phone_shop items
 iphone = phone_shop.items.create(name: "Iphone XR", description: "Oldest new phone!", price: 800, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone8-gold-select-2018?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1550795416637", inventory: 32)
 android = phone_shop.items.create(name: "Android 1", description: "Slowest new phone!", price: 400, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgi4uWht9jhk0EwSp5TYpELMGNgtSW1L9QLNdJTOFuPV18xQVrAA&s", inventory: 34)
-flip_phone = phone_shop.items.create(name: "Flip", description: "No you're grandmas phone!", price: 40, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8nPXoZcZDMspHo9vxUf2f9lXVbNv1Y7UlFTMKieA_WURkoIiD&s", inventory: 35)
+flip_phone = phone_shop.items.create(name: "Flip", description: "Not your grandma's phone!", price: 40, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8nPXoZcZDMspHo9vxUf2f9lXVbNv1Y7UlFTMKieA_WURkoIiD&s", inventory: 35)
 nokia = phone_shop.items.create(name: "Nokia", description: "World's toughest phone!", price: 45, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0w9g0LfbdHVJnfoL8Svw2vgXo1YXUOxr_Bvr_sDa3JEMfCI__Lw&s", inventory:100)
 
 #watch_shop items
@@ -37,7 +37,7 @@ rolex = watch_shop.items.create(name: "Rolex", description: "The watch that does
 #liquor_store items
 royal = liquor_store.items.create(name: "Royal", description: "One glass 'ill do ya'!", price: 100, image: "https://image.insider.com/5b8060763cccd122008b4579?width=1100&format=jpeg&auto=webp", inventory: 8)
 yamazaki = liquor_store.items.create(name: "The Yamazaki", description: "Imported whiskey!", price: 180, image: "https://cdn11.bigcommerce.com/s-zhp7f0lunw/images/stencil/1024x1024/products/17352/4757/Nikka_From_the_Barrel__52967.1577829892.jpg?c=2", inventory: 7)
-nikka = liquor_store.items.create(name: "Nikka", description: "Staight from the barrel!", price: 180, image: "https://cdn11.bigcommerce.com/s-zhp7f0lunw/images/stencil/1024x1024/products/17352/4757/Nikka_From_the_Barrel__52967.1577829892.jpg?c=2", inventory: 10)
+nikka = liquor_store.items.create(name: "Nikka", description: "Straight from the barrel!", price: 180, image: "https://cdn11.bigcommerce.com/s-zhp7f0lunw/images/stencil/1024x1024/products/17352/4757/Nikka_From_the_Barrel__52967.1577829892.jpg?c=2", inventory: 10)
 
 
 user = User.create(name: "Jordan",
@@ -104,11 +104,11 @@ fourth_merchant_admin = User.create(name: 'Watch Merchant Admin',
                                     merchant_id: watch_shop.id)
 
 fifth_merchant_admin = User.create(name: 'Liquor Merchant Admin',
-                                    address: '19 razor St',
+                                    address: '19 Razor St',
                                     city: 'Denver',
                                     state: 'CO',
                                     zip_code: '80223',
-                                    email: 'liqourmerchant@gmail.com',
+                                    email: 'liquormerchant@gmail.com',
                                     password: 'password',
                                     password_confirmation: 'password',
                                     role: 2,
@@ -125,7 +125,7 @@ merchant_employee = User.create(name: "Merchant Employee",
                                 role: 3)
 
 merchant_employee_2 = User.create(name: "Merchant Employee 2",
-                                address: "394 low St",
+                                address: "394 Low St",
                                 city: "Denver",
                                 state: "CO",
                                 zip_code: "80602",
@@ -173,10 +173,12 @@ ItemOrder.create(item: royal, order: order_3, price: royal.price, quantity: 1, s
 
 order_4 = user.orders.create(name: "Linda", address: "456 Low Road", city: "Cleveland", state: "OH", zip: "44335", current_status: 0)
 ItemOrder.create(item: yamazaki, order: order_4, price: yamazaki.price, quantity: 3, status: 1)
+ItemOrder.create(item: nikka, order: order_4, price: nikka.price, quantity: 2, status: 1)
 ItemOrder.create(item: rolex, order: order_4, price: rolex.price, quantity: 1, status: 1)
 ItemOrder.create(item: flip_phone, order: order_4, price: flip_phone.price, quantity: 10, status: 1)
 
 order_5 = user.orders.create(name: "Jordie", address: "456 Low Street", city: "Cleveland", state: "OH", zip: "44336", current_status: 0)
 ItemOrder.create(item: rolex, order: order_5, price: rolex.price, quantity: 1, status: 1)
 ItemOrder.create(item: iphone, order: order_5, price: iphone.price, quantity: 1, status: 1)
+ItemOrder.create(item: flip_phone, order: order_5, price: flip_phone.price, quantity: 1, status: 1)
 ItemOrder.create(item: nikka, order: order_5, price: nikka.price, quantity: 100, status: 1)
