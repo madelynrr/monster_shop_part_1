@@ -15,8 +15,8 @@ User.destroy_all
 bike_shop = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
 dog_shop = Merchant.create(name: "Brian's Dog Shop", address: '125 Doggo St.', city: 'Denver', state: 'CO', zip: 80210)
 phone_shop = Merchant.create(name: "Daniel's phone Shop", address: '456 Doggo St.', city: 'Denver', state: 'CO', zip: 80220)
-watch_shop = Merchant.create(name: "Danny's phone Shop", address: '456 puppo St.', city: 'Denver', state: 'CO', zip: 80221)
-liquor_store = Merchant.create(name: "Danny's liquor_store", address: '456 liq St.', city: 'Denver', state: 'CO', zip: 80222)
+watch_shop = Merchant.create(name: "Danny's Watch Shop", address: '456 puppo St.', city: 'Denver', state: 'CO', zip: 80221)
+liquor_store = Merchant.create(name: "Danny's Liquor store", address: '456 liq St.', city: 'Denver', state: 'CO', zip: 80222)
 
 #bike_shop items
 tire = bike_shop.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
@@ -24,6 +24,9 @@ tire = bike_shop.items.create(name: "Gatorskins", description: "They'll never po
 #dog_shop items
 pull_toy = dog_shop.items.create(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 32)
 dog_bone = dog_shop.items.create(name: "Dog Bone", description: "They'll love it!", price: 21, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", active?:false, inventory: 21)
+
+#phone_shop items
+iphone = phone_shop.items.create(name: "Iphone XR", description: "Oldest new phone!", price: 800, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone8-gold-select-2018?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1550795416637", inventory: 32)
 
 user = User.create(name: "Jordan",
                     address: "394 High St",
