@@ -2,7 +2,7 @@
 
 <center><h2><%= link_to "Add New Item", "/merchant/items/new"%></h2></center>
 
-<%= @items.each do |item| %>
+<% @items.each do |item| %>
 <section id="item-<%=item.id%>">
   <%=  item.name %>
   <%=  item.description %>
