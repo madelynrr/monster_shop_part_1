@@ -14,7 +14,7 @@ To implement Monster Shop locally, run the following commands:
 
 <code>rails db{:drop}</code>
 
-##Contributors
+## Contributors
 
 [Travis Borgsmiller](https://github.com/TravisBorgsmiller)
 
