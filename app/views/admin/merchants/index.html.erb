@@ -6,13 +6,14 @@
       <% if current_admin? %>
         <section id="merchant-<%= merchant.id %>">
           <h2><%=link_to merchant.name, "/admin/merchants/#{merchant.id}"%></h2>
-        <% if merchant.enabled? %>
+          <%= merchant.city %>,
+          <%= merchant.state %>
+        <% if merchant.enabled? %> <center>
           <%= button_to 'Disable Merchant', "/admin/merchants/#{merchant.id}", method: :patch %>
         <% else%>
           <%= button_to 'Enable Merchant', "/admin/merchants/#{merchant.id}", method: :patch %>
         <% end %>
-        <%= merchant.city %>
-        <%= merchant.state %>
+        </center>
         </section>
     </section>
       <% else %>
