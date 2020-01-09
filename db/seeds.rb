@@ -31,6 +31,11 @@ android = phone_shop.items.create(name: "Android 1", description: "Slowest new p
 flip_phone = phone_shop.items.create(name: "Flip", description: "No you're grandmas phone!", price: 40, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8nPXoZcZDMspHo9vxUf2f9lXVbNv1Y7UlFTMKieA_WURkoIiD&s", inventory: 35)
 nokia = phone_shop.items.create(name: "Nokia", description: "World's toughest phone!", price: 45, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0w9g0LfbdHVJnfoL8Svw2vgXo1YXUOxr_Bvr_sDa3JEMfCI__Lw&s", inventory:100)
 
+#watch_shop items
+rolex = watch_shop.items.create(name: "Rolex", description: "The watch that doesn't stop!", price: 10000, image: "https://s.yimg.com/aah/movadobaby/rolex-submariner-blue-watch-16613lb-32.jpg", inventory: 1)
+
+
+
 user = User.create(name: "Jordan",
                     address: "394 High St",
                     city: "Denver",
