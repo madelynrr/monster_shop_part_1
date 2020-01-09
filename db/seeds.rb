@@ -125,6 +125,7 @@ merchant_employee = User.create(name: "Merchant Employee",
                                 role: 3)
 
 bike_shop.users << merchant_admin
+bike_shop.users << merchant_employee
 
 order_1 = user.orders.create(name: "Jordan", address: "123 Hi Road", city: "Cleveland", state: "OH", zip: "44333", current_status: 0)
 ItemOrder.create(item: tire, order: order_1, price: tire.price, quantity: 2, status: 0)
