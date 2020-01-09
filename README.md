@@ -1,8 +1,11 @@
 # Monster Shop
+BE Mod 2 Week 4/5 Group Project (Part 1)
+
 
 ## Introduction
 
 Monster Shop is a basic, Rails e-commerce application. Assigned as a group project during Mod 2 of 4 to our group of five, we worked across a period of twelve days to implement a slew of e-commerce basics including CRUD functionality, log in and authentication, authorization (for four different user types), cart functionality, and statistics for multiple aspects of the site (most popular, least popular, etc.)
+
 
 ## Implementation Instructions
 
@@ -24,8 +27,7 @@ Create a new [heroku](https://id.heroku.com/login) app and connect to your local
 
 Deploy Monster Shop from heroku.
 
-
-
+![alt text](https://www.google.com/search?q=pumpkin+images&rlz=1C5CHFA_enUS864US876&sxsrf=ACYBGNTaDK_6aROibt_S89RQ1dAKdIVTUA:1578600820588&tbm=isch&source=iu&ictx=1&fir=gGc9zGa4BnjcaM%253A%252C_R5GW8nNr8ncQM%252C_&vet=1&usg=AI4_-kS8b_ZDigcNsI70OmJV50C87gijZg&sa=X&ved=2ahUKEwil0JypqvfmAhVCU80KHX4kANkQ9QEwAXoECAoQMA#imgrc=gGc9zGa4BnjcaM:)
 
 
 ## Contributors
@@ -40,12 +42,6 @@ Deploy Monster Shop from heroku.
 
 [Madelyn R. Romero](https://github.com/madelynrr)
 
-
-
-
-
-
-BE Mod 2 Week 4/5 Group Project (Part 1)
 
 ## Background and Description
 
