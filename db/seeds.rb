@@ -144,3 +144,4 @@ ItemOrder.create(item: rolex, order: order_4, price: rolex.price, quantity: 1, s
 ItemOrder.create(item: flip_phone, order: order_4, price: flip_phone.price, quantity: 10, status: 1)
 
 order_5 = user.orders.create(name: "Jordie", address: "456 Low Street", city: "Cleveland", state: "OH", zip: "44336", current_status: 0)
+ItemOrder.create(item: rolex, order: order_5, price: rolex.price, quantity: 1, status: 1)
