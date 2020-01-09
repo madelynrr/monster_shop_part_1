@@ -1,45 +1,53 @@
 <h1> All Orders </h1>
 
-<h1> Packaged Orders </h1>
+<h1> Packaged Orders </h1><br>
+
+<section class="grid-container">
 <% @orders.each do |order| %>
 <% if order.current_status == "packaged" %>
-<section id = "order-<%= order.id %>" >
-  Order ID: <%= order.id %>
-  Name: <%=link_to "#{order.name}", "/admin/profile/#{order.user.id}" %>
-  Created: <%= order.created_at %>
+<section class="grid-item" id = "order-<%= order.id %>" >
+  Order ID: <%= order.id %><br>
+  Name: <%=link_to "#{order.name}", "/admin/profile/#{order.user.id}" %><br>
+  Created: <%= order.created_at %><br><br>
   <%= button_to "Ship Order", "/admin/orders/#{order.id}", method: :patch %>
   </section>
 <%end%>
 <%end%>
+</section>
 
-<h1> Pending Orders </h1>
+<h1> Pending Orders </h1><br>
+<section class="grid-container">
 <% @orders.each do |order| %>
 <% if order.current_status == "pending" %>
-<section id = "order-pending">
+<section class="grid-item" id = "order-pending">
   Order ID: <%= order.id %>
   Name: <%=link_to "#{order.name}", "/admin/profile/#{order.user.id}" %>
   Created: <%= order.created_at %>
 </section>
 <%end%>
 <%end%>
+</section>
 
-
-<h1> Shipped Orders </h1>
+<h1> Shipped Orders </h1><br>
+<section class="grid-container">
 <% @orders.each do |order| %>
 <% if order.current_status == "shipped" %>
-<section id = "order-shipped">
+<section class="grid-item" id = "order-shipped">
   Order ID: <%= order.id %>
   Name: <%=link_to "#{order.name}", "/admin/profile/#{order.user.id}" %>
   Created: <%= order.created_at %></section>
 <%end%>
 <%end%>
+</section>
 
-<h1> Cancelled Orders </h1>
+<h1> Cancelled Orders </h1><br>
+<section class="grid-container">
 <% @orders.each do |order| %>
 <% if order.current_status == "cancelled" %>
-<section id = "order-cancelled">
+<section class="grid-item" id = "order-cancelled">
   Order ID: <%= order.id %>
   Name: <%=link_to "#{order.name}", "/admin/profile/#{order.user.id}" %>
   Created: <%= order.created_at %></section>
 <% end %>
 <% end %>
+</section>
