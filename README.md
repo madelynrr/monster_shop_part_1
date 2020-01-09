@@ -1,4 +1,36 @@
 # Monster Shop
+
+##Implementation Instructions
+
+To implement Monster Shop locally, run the following commands:
+
+<code>git clone git@github.com:linda-le1/monster_shop_part_1.git</code>
+
+<code>cd monster_shop_part_1</code>
+
+<code>bundle install</code>
+
+<code>bundle update</code>
+
+<code>rails db{:drop}</code>
+
+##Contributors
+
+[Travis Borgsmiller](https://github.com/TravisBorgsmiller)
+
+[Jordan Holtkamp](https://github.com/jordanholtkamp)
+
+[Linda Le](https://github.com/linda-le1)
+
+[Daniel Moran](https://github.com/danmoran-pro)
+
+[Madelyn R. Romero](https://github.com/madelynrr)
+
+
+
+
+
+
 BE Mod 2 Week 4/5 Group Project (Part 1)
 
 ## Background and Description
