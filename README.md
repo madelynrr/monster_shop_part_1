@@ -1,5 +1,11 @@
 # Monster Shop
 BE Mod 2 Week 4/5 Group Project (Part 1)
+Project Members:  
+Madelyn Romero https://github.com/madelynrr
+Linda Le https://github.com/linda-le1
+Jordan Holtkamp https://github.com/jordanholtkamp
+Travis Borgsmiller https://github.com/TravisBorgsmiller
+Daniel Moran https://github.com/danmoran-pro
 
 ## Background and Description
 
