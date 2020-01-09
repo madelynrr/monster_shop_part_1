@@ -27,7 +27,7 @@ Create a new [heroku](https://id.heroku.com/login) app and connect to your local
 
 Deploy Monster Shop from heroku.
 
-![alt text](https://www.google.com/search?q=pumpkin+images&rlz=1C5CHFA_enUS864US876&sxsrf=ACYBGNTaDK_6aROibt_S89RQ1dAKdIVTUA:1578600820588&tbm=isch&source=iu&ictx=1&fir=gGc9zGa4BnjcaM%253A%252C_R5GW8nNr8ncQM%252C_&vet=1&usg=AI4_-kS8b_ZDigcNsI70OmJV50C87gijZg&sa=X&ved=2ahUKEwil0JypqvfmAhVCU80KHX4kANkQ9QEwAXoECAoQMA#imgrc=gGc9zGa4BnjcaM:)
+![alt text]("/app/assets/images/https://files.slack.com/files-pri/T029P2S9M-FS4QE5MNX/screen_shot_2020-01-09_at_10.58.49_am.png")
 
 
 ## Contributors
