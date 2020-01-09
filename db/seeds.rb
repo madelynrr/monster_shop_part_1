@@ -173,9 +173,9 @@ ItemOrder.create(item: royal, order: order_3, price: royal.price, quantity: 1, s
 
 order_4 = user.orders.create(name: "Linda", address: "456 Low Road", city: "Cleveland", state: "OH", zip: "44335", current_status: 0)
 ItemOrder.create(item: yamazaki, order: order_4, price: yamazaki.price, quantity: 3, status: 0)
-ItemOrder.create(item: nikka, order: order_4, price: nikka.price, quantity: 2, status: 1)
-ItemOrder.create(item: rolex, order: order_4, price: rolex.price, quantity: 1, status: 1)
-ItemOrder.create(item: flip_phone, order: order_4, price: flip_phone.price, quantity: 10, status: 1)
+ItemOrder.create(item: nikka, order: order_4, price: nikka.price, quantity: 2, status: 0)
+ItemOrder.create(item: rolex, order: order_4, price: rolex.price, quantity: 1, status: 0)
+ItemOrder.create(item: flip_phone, order: order_4, price: flip_phone.price, quantity: 10, status: 0)
 
 order_5 = user.orders.create(name: "Jordie", address: "456 Low Street", city: "Cleveland", state: "OH", zip: "44336", current_status: 0)
 ItemOrder.create(item: rolex, order: order_5, price: rolex.price, quantity: 1, status: 1)
