@@ -27,6 +27,14 @@ Create a new [heroku](https://id.heroku.com/login) app and connect to your local
 
 Deploy Monster Shop from heroku.
 
+
+## [Heroku Link](https://thawing-dusk-36674.herokuapp.com/)
+
+
+
+
+## Schema Design
+
 ![alt text](/app/assets/images/screen_shot_2020-01-09_at_10.58.49_am.png)
 
 
