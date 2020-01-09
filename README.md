@@ -1,13 +1,55 @@
 # Monster Shop
-BE Mod 2 Week 4/5 Group Project (Part 1)
-Project Members:  
-Madelyn Romero https://github.com/madelynrr
-Linda Le https://github.com/linda-le1
-Jordan Holtkamp https://github.com/jordanholtkamp
-Travis Borgsmiller https://github.com/TravisBorgsmiller
-Daniel Moran https://github.com/danmoran-pro
+
+
+## Introduction
+
+Monster Shop is a basic, Rails e-commerce application. Assigned as a group project during Mod 2 of 4 to our group of five, we worked across a period of twelve days to implement a slew of e-commerce basics including CRUD functionality, log in and authentication, authorization (for four different user types), cart functionality, and statistics for multiple aspects of the site (most popular, least popular, etc.)
+
+View Monster Shop from heroku [here](https://thawing-dusk-36674.herokuapp.com/).
+
+
+## Implementation Instructions
+
+To implement Monster Shop locally, run the following commands:
+
+<code>git clone git@github.com:linda-le1/monster_shop_part_1.git</code>
+
+<code>cd monster_shop_part_1</code>
+
+<code>bundle install</code>
+
+<code>bundle update</code>
+
+<code>rails db:{drop,create,migrate,seed}</code>
+
+Create a new [heroku](https://id.heroku.com/login) app and connect to your local monster shop repository with:
+
+<code>heroku git:remote -a your_heroku_app_name</code>
+
+Deploy Monster Shop from heroku.
+
+
+## Schema Design
+
+![alt text](/app/assets/images/screen_shot_2020-01-09_at_10.58.49_am.png)
+
+
+## Contributors
+
+[Travis Borgsmiller](https://github.com/TravisBorgsmiller)
+
+[Jordan Holtkamp](https://github.com/jordanholtkamp)
+
+[Linda Le](https://github.com/linda-le1)
+
+[Daniel Moran](https://github.com/danmoran-pro)
+
+[Madelyn R. Romero](https://github.com/madelynrr)
+
 
 ## Background and Description
+
+BE Mod 2 Week 4/5 Group Project (Part 1)
 
 "Monster Shop" is a fictitious e-commerce platform where users can register to place items into a shopping cart and 'check out'. Users who work for a merchant can mark their items as 'fulfilled'; the last merchant to mark items in an order as 'fulfilled' will automatically set the order status to "shipped". Each user role will have access to some or all CRUD functionality for application models.
 
