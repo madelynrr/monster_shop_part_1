@@ -27,7 +27,7 @@ Create a new [heroku](https://id.heroku.com/login) app and connect to your local
 
 Deploy Monster Shop from heroku.
 
-![alt text]("/app/assets/images/screen_shot_2020-01-09_at_10.58.49_am.png)
+![alt text](/app/assets/images/screen_shot_2020-01-09_at_10.58.49_am.png)
 
 
 ## Contributors
