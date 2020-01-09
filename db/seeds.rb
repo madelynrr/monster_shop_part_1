@@ -103,6 +103,17 @@ fourth_merchant_admin = User.create(name: 'Watch Merchant Admin',
                                     role: 2,
                                     merchant_id: watch_shop.id)
 
+fifth_merchant_admin = User.create(name: 'Liquor Merchant Admin',
+                                    address: '19 razor St',
+                                    city: 'Denver',
+                                    state: 'CO',
+                                    zip_code: '80223',
+                                    email: 'liqourmerchant@gmail.com',
+                                    password: 'password',
+                                    password_confirmation: 'password',
+                                    role: 2,
+                                    merchant_id: liquor_store.id)
+
 merchant_employee = User.create(name: "Merchant Employee",
                                 address: "394 High St",
                                 city: "Denver",
