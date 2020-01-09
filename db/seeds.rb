@@ -52,6 +52,17 @@ merchant_admin = User.create(name: "Merchant Admin",
                             password_confirmation: "password",
                             role: 2)
 
+second_merchant_admin = User.create(name: 'Dog Merchant Admin',
+                                    address: '1979 Blake St',
+                                    city: 'Denver',
+                                    state: 'CO',
+                                    zip_code: '80211',
+                                    email: 'dogshopmerchant@gmail.com',
+                                    password: 'password',
+                                    password_confirmation: 'password',
+                                    role: 2,
+                                    merchant_id: dog_shop.id)
+
 merchant_employee = User.create(name: "Merchant Employee",
                                 address: "394 High St",
                                 city: "Denver",
