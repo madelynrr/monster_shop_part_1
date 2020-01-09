@@ -51,15 +51,13 @@ RSpec.describe 'As an Admin' do
     expect(page).to have_content("#{merchant.zip}")
 
     within "#order-pending-#{order.id}" do
-    expect(page).to have_link("#{order.id}")
+    expect(page).to have_content("#{order.id}")
     expect(page).to have_content("Date Created: #{order.created_at}")
     expect(page).to have_content("Total Quantity: #{order.items.count}")
     expect(page).to have_content("Total: #{order.grandtotal}")
     end
 
     expect(page).to_not have_content("ID: #{order_2.id}")
-    click_on("#{order.id}")
-    expect(current_path).to eq("/merchant/orders/#{order.id}")
   end
 
   it "can see button to disable each merchant if the merchant is not disabled" do
