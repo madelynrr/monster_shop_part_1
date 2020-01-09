@@ -10,8 +10,8 @@
           <%= button_to 'Disable Merchant', "/admin/merchants/#{merchant.id}", method: :patch %>
         <% else%>
           <%= button_to 'Enable Merchant', "/admin/merchants/#{merchant.id}", method: :patch %>
-        <% end %>
-        <%= merchant.city %>
+        <% end %><br><br>
+        <%= merchant.city %>, 
         <%= merchant.state %>
         </section>
     </section>
