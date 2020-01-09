@@ -18,11 +18,11 @@ To implement Monster Shop locally, run the following commands:
 
 <code>rails db:{drop,create,migrate,seed}</code>
 
-Create a new heroku app and connect to your local monster shop repository with:
+Create a new [heroku](https://id.heroku.com/login) app and connect to your local monster shop repository with:
 
 <code>heroku git:remote -a your_heroku_app_name</code>
 
-Deploy app from heroku.
+Deploy Monster Shop from heroku.
 
 
 
