@@ -21,7 +21,6 @@ class Merchant::ItemsController < Merchant::BaseController
 
   def destroy
     item = Item.find(params[:id])
-    # current_user.merchant.items.delete(item)
     item.destroy
     flash[:success] = "You deleted #{item.name}"
     redirect_to "/merchant/items"
@@ -31,6 +30,7 @@ class Merchant::ItemsController < Merchant::BaseController
     @item = Item.find(params[:id])
     if params[:commit]
       @item.update(item_params)
+      give_default_image_if_needed(@item)
       edit_item_info(@item)
     else
       @item.toggle_active_status
