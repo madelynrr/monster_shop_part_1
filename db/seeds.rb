@@ -34,6 +34,8 @@ nokia = phone_shop.items.create(name: "Nokia", description: "World's toughest ph
 #watch_shop items
 rolex = watch_shop.items.create(name: "Rolex", description: "The watch that doesn't stop!", price: 10000, image: "https://s.yimg.com/aah/movadobaby/rolex-submariner-blue-watch-16613lb-32.jpg", inventory: 1)
 
+#liquor_store items
+royal = liquor_store.items.create(name: "Royal", description: "One glass 'ill do ya'!", price: 100, image: "https://image.insider.com/5b8060763cccd122008b4579?width=1100&format=jpeg&auto=webp", inventory: 8)
 
 
 user = User.create(name: "Jordan",
