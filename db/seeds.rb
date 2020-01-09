@@ -182,3 +182,10 @@ ItemOrder.create(item: rolex, order: order_5, price: rolex.price, quantity: 1, s
 ItemOrder.create(item: iphone, order: order_5, price: iphone.price, quantity: 1, status: 0)
 ItemOrder.create(item: flip_phone, order: order_5, price: flip_phone.price, quantity: 1, status: 0)
 ItemOrder.create(item: nikka, order: order_5, price: nikka.price, quantity: 100, status: 0)
+
+#reviews
+review_1 = iphone.reviews.create(title: "Best phone!", content: "!!!", rating: 5)
+review_2 = iphone.reviews.create(title: "OK phone", content: "Meh, it's fine", rating: 3)
+review_3 = rolex.reviews.create(title: "So ice", content: "niceeeeee", rating: 5)
+review_4 = royal.reviews.create(title: "Not too impressed", content: "v basic", rating: 2)
+review_5 = nikka.reviews.create(title: "Okay", content: "It's ok", rating: 3)
