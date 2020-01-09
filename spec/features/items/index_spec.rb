@@ -109,7 +109,7 @@ RSpec.describe "Items Index Page" do
 
       within "#stats" do
         within "#most-popular" do
-          expect(page).to have_content("Most popular items on the site:")
+          expect(page).to have_content("MOST POPULAR ITEMS")
           expect(page).to have_content(item_5.name)
           expect(page).to have_content(item_7.name)
           expect(page).to have_content(item_2.name)
@@ -120,7 +120,7 @@ RSpec.describe "Items Index Page" do
         end
 
         within "#least-popular" do
-          expect(page).to have_content("Not our best sellers:")
+          expect(page).to have_content("NOT OUR BEST SELLERS")
           expect(page).to have_content(item_6.name)
           expect(page).to have_content(item_3.name)
           expect(page).to have_content(item_2.name)
