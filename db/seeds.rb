@@ -144,6 +144,16 @@ merchant_employee_3 = User.create(name: "Merchant Employee 3",
                                 password_confirmation: "password",
                                 role: 3)
 
+merchant_employee_4 = User.create(name: "Merchant Employee 4",
+                                address: "394 Super St",
+                                city: "Denver",
+                                state: "CO",
+                                zip_code: "80602",
+                                email: "merchant4@hotmail.com",
+                                password: "password",
+                                password_confirmation: "password",
+                                role: 3)
+
 bike_shop.users << merchant_admin
 bike_shop.users << merchant_employee
 phone_shop.users << merchant_employee_2
