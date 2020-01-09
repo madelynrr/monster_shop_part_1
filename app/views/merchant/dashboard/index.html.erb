@@ -1,4 +1,5 @@
 <h1 align = "center">Merchant</h1>
+
 <%= current_user.merchant.name %></br></br>
 <%= current_user.merchant.address %>
 <p><%= current_user.merchant.city %>
@@ -6,9 +7,11 @@
 <%= current_user.merchant.zip %></p>
 <%= link_to "See My Items", "/merchant/items" %>
 
+<section class="grid-container">
+
 <% @orders.each do |order| %>
 <% if order.current_status == "pending" %>
-<section id = "pending-<%= order.id %>">
+<section class="grid-item" id = "pending-<%= order.id %>">
   <p>ID: <%= link_to "#{order.id}", "/merchant/orders/#{order.id}" %></p>
   <p>Order Created: <%= order.created_at %></p>
   <p>Quantity of my items in this order: <%= order.merchant_item_quantity(current_user.merchant) %></p>
@@ -16,3 +19,4 @@
 </section>
 <% end %>
 <% end %>
+</section>
