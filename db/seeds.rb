@@ -15,6 +15,7 @@ User.destroy_all
 bike_shop = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
 dog_shop = Merchant.create(name: "Brian's Dog Shop", address: '125 Doggo St.', city: 'Denver', state: 'CO', zip: 80210)
 phone_shop = Merchant.create(name: "Daniel's phone Shop", address: '456 Doggo St.', city: 'Denver', state: 'CO', zip: 80220)
+watch_shop = Merchant.create(name: "Danny's phone Shop", address: '456 puppo St.', city: 'Denver', state: 'CO', zip: 80221)
 
 #bike_shop items
 tire = bike_shop.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
