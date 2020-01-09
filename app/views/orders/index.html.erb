@@ -13,21 +13,21 @@
     <% order.item_orders.each do |item_order| %>
   <section id="item-<%= item_order.item.id %>">
     <ul>
-      <li><%= link_to "#{item_order.item.name}", "/items/#{item_order.item.id}" %></li>
-      <li><%= link_to "#{item_order.item.merchant.name}", "merchants/#{item_order.item.merchant.id}" %></li>
-      <li><%= number_to_currency(item_order.price) %></li>
-      <li><%= item_order.quantity %></li>
-      <li><%= number_to_currency(item_order.subtotal) %></li>
+      <li><b>Item Purchased: </b><%= link_to "#{item_order.item.name}", "/items/#{item_order.item.id}" %></li>
+      <li><b>Store Name: </b><%= link_to "#{item_order.item.merchant.name}", "merchants/#{item_order.item.merchant.id}" %></li>
+      <li><b>Price: </b><%= number_to_currency(item_order.price) %></li>
+      <li><b>Quantity: </b><%= item_order.quantity %></li>
+      <li><b>Subtotal for Item(s) Purchased: </b> <%= number_to_currency(item_order.subtotal) %></li>
     </ul>
   </section>
   <% end %>
-  <center>Number of Items in This Order: <%= order.items.count %>
+  <center><b>Number of Items in This Order: </b><%= order.items.count %>
   <section id="grandtotal">
-    Total: <%= number_to_currency(order.grandtotal.to_i) %></center>
+    <b>Grand Total: </b><%= number_to_currency(order.grandtotal.to_i) %></center>
   </section>
 
   <center><section id="datecreated">
-    Order Created On: <%= order.created_at %>
-    Order Last Updated On: <%=order.updated_at%>
+    <b>Order Created On: </b><%= order.created_at %></br>
+    <b>Order Last Updated On: </b><%=order.updated_at%>
   </section></center>
 <% end %>
