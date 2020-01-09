@@ -132,3 +132,8 @@ ItemOrder.create(item: tire, order: order_1, price: tire.price, quantity: 2, sta
 
 order_2 = user.orders.create(name: "Jordan", address: "123 Hi Road", city: "Cleveland", state: "OH", zip: "44333", current_status: 1)
 ItemOrder.create(item: tire, order: order_2, price: tire.price, quantity: 2, status: 1)
+
+order_3 = user.orders.create(name: "Danny", address: "123 Low Road", city: "Cleveland", state: "OH", zip: "44334", current_status: 0)
+ItemOrder.create(item: android, order: order_3, price: android.price, quantity: 1, status: 1)
+ItemOrder.create(item: rolex, order: order_3, price: rolex.price, quantity: 1, status: 1)
+ItemOrder.create(item: royal, order: order_3, price: royal.price, quantity: 1, status: 1)
