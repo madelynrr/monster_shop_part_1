@@ -1,9 +1,13 @@
 <h1>Users Index</h1>
 
 <% @users.each do |user| %>
-<section id="users-<%= user.id %>">
+
+<section class="grid-container">
+
+<section class="grid-item" id="users-<%= user.id %>">
   <%=link_to user.name, "/admin/users/#{user.id}" %>
   <p>User created at <%= user.created_at %></p>
   <%= user.role %>
 </section>
 <% end %>
+</section>
