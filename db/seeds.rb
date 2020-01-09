@@ -28,7 +28,8 @@ dog_bone = dog_shop.items.create(name: "Dog Bone", description: "They'll love it
 #phone_shop items
 iphone = phone_shop.items.create(name: "Iphone XR", description: "Oldest new phone!", price: 800, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone8-gold-select-2018?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1550795416637", inventory: 32)
 android = phone_shop.items.create(name: "Android 1", description: "Slowest new phone!", price: 400, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgi4uWht9jhk0EwSp5TYpELMGNgtSW1L9QLNdJTOFuPV18xQVrAA&s", inventory: 34)
-flip_phone = phone_shop.items.create(name: "Flip phone 1", description: "No you're grandmas phone!", price: 40, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8nPXoZcZDMspHo9vxUf2f9lXVbNv1Y7UlFTMKieA_WURkoIiD&s", inventory: 35)
+flip_phone = phone_shop.items.create(name: "Flip", description: "No you're grandmas phone!", price: 40, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8nPXoZcZDMspHo9vxUf2f9lXVbNv1Y7UlFTMKieA_WURkoIiD&s", inventory: 35)
+nokia = phone_shop.items.create(name: "Nokia", description: "World's toughest phone!", price: 45, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0w9g0LfbdHVJnfoL8Svw2vgXo1YXUOxr_Bvr_sDa3JEMfCI__Lw&s", inventory:100)
 
 user = User.create(name: "Jordan",
                     address: "394 High St",
