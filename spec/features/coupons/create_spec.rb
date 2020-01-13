@@ -33,7 +33,6 @@ RSpec.describe "as a merchant user" do
     click_button "Add Coupon"
 
     expect(current_path).to eq("/merchant/coupons")
-
     new_coupon = Coupon.last
 
     expect(page).to have_content(new_coupon.name)
