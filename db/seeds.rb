@@ -5,11 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-Merchant.destroy_all
-Item.destroy_all
-Order.destroy_all
-User.destroy_all
+# Coupon.destroy_all
+# Review.destroy_all
+# Merchant.destroy_all
+# ItemOrder.destroy_all
+# Item.destroy_all
+# Order.destroy_all
+# User.destroy_all
 
 #merchants
 bike_shop = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
@@ -189,3 +191,18 @@ review_2 = iphone.reviews.create(title: "OK phone", content: "Meh, it's fine", r
 review_3 = rolex.reviews.create(title: "So ice", content: "niceeeeee", rating: 5)
 review_4 = royal.reviews.create(title: "Not too impressed", content: "v basic", rating: 2)
 review_5 = nikka.reviews.create(title: "Okay", content: "It's ok", rating: 3)
+
+coupon_1 = Coupon.create(name: "10% Off",
+            code: "1234",
+            percentage: 10,
+            merchant_id: bike_shop.id)
+
+coupon_2 = Coupon.create(name: "20% Off",
+            code: "2345",
+            percentage: 20,
+            merchant_id: bike_shop.id)
+
+coupon_3 = Coupon.create(name: "30% Off",
+            code: "3456",
+            percentage: 30,
+            merchant_id: dog_shop.id)
