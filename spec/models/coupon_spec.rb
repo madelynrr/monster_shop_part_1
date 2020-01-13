@@ -9,7 +9,7 @@ describe Coupon, type: :model do
     it {should validate_uniqueness_of :name}
     it {should validate_uniqueness_of :code}
 
-    it {should validate_inclusion_of(:percentage).in_array((1..100).to_a)}
+    it {should validate_inclusion_of(:percentage).in_array((0..100).to_a).with_message("needs to be between 0 and 100.")}
   end
 
   describe "relationships" do
