@@ -20,7 +20,7 @@ RSpec.describe "as a merchant user" do
 
     click_button "Add A Coupon"
 
-    expect(current_path).to eq("/merchant/coupon/new")
+    expect(current_path).to eq("/merchant/coupons/new")
 
     coupon_name = "10% Off"
     coupon_code = "1234"
