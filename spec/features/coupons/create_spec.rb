@@ -136,6 +136,6 @@ RSpec.describe "as a merchant user" do
 
     click_button "Add Coupon"
 
-    expect(page).to have_content("Percentage needs to be between 1 and 100.")
+    expect(page).to have_content("Percentage needs to be between 0 and 100.")
   end
 end
