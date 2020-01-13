@@ -4,6 +4,9 @@ class Merchant::CouponsController < Merchant::BaseController
     @coupons = Coupon.where("merchant_id = #{current_user.merchant.id}")
   end
 
+  def show
+  end
+
   def new
   end
 
