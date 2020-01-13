@@ -70,7 +70,8 @@ merchant_admin = User.create(name: "Merchant Admin",
                             email: "merchantadmin@hotmail.com",
                             password: "password",
                             password_confirmation: "password",
-                            role: 2)
+                            role: 2,
+                            merchant_id: bike_shop.id)
 
 second_merchant_admin = User.create(name: 'Dog Merchant Admin',
                                     address: '1979 Blake St',
