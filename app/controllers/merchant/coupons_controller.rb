@@ -9,8 +9,13 @@ class Merchant::CouponsController < Merchant::BaseController
 
   def create
     merchant = current_user.merchant
-    merchant.coupons.create(coupon_params)
-    redirect_to "/merchant/coupons"
+    coupon = merchant.coupons.create(coupon_params)
+    if coupon.save
+      redirect_to "/merchant/coupons"
+    else
+      flash[:error] = coupon.errors.full_messages.to_sentence
+      render :new
+    end
   end
 
   private
