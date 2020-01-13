@@ -7,4 +7,15 @@ class Merchant::CouponsController < Merchant::BaseController
   def new
   end
 
+  def create
+    merchant = current_user.merchant
+    merchant.coupons.create(coupon_params)
+    redirect_to "/merchant/coupons"
+  end
+
+  private
+    def coupon_params
+      params.permit(:name,:code,:percentage)
+    end
+
 end
