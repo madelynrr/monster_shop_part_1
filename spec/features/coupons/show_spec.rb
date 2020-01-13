@@ -33,7 +33,7 @@ RSpec.describe "as a merchant user" do
     expect(current_path).to eq("/merchant/coupons/#{coupon_2.id}")
 
     expect(page).to have_content(coupon_2.name)
-    expect(page).to have_content(coupon_2.code)
-    expect(page).to have_content(coupon_2.percentage)
+    expect(page).to have_content("Coupon Code: #{coupon_2.code}")
+    expect(page).to have_content("Percent Off: #{coupon_2.percentage}%")
   end
 end
