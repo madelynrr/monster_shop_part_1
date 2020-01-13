@@ -23,12 +23,12 @@ RSpec.describe "as a merchant user" do
 
       coupon_2 = Coupon.create(name: "20% Off",
                   code: "2345",
-                  percentage: 10,
+                  percentage: 20,
                   merchant_id: merchant_1.id)
 
       coupon_3 = Coupon.create(name: "30% Off",
                   code: "3456",
-                  percentage: 10,
+                  percentage: 30,
                   merchant_id: merchant_2.id)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant_1_admin)
