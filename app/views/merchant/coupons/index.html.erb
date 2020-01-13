@@ -1,5 +1,5 @@
 <% @coupons.each do |coupon| %>
-  <%= coupon.name %>
+  <%= link_to coupon.name, "/merchant/coupons/#{coupon.id}" %>
   <%= coupon.code %>
   <%= coupon.percentage %>
 <% end %>
