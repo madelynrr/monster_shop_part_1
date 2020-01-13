@@ -66,6 +66,7 @@ Rails.application.routes.draw do
     patch 'items/:id', to: 'items#update'
     get '/items/:id/edit', to: 'items#edit'
     get '/coupons', to: 'coupons#index'
+    get '/coupons/new', to: 'coupons#new'
   end
 
   namespace :admin do
