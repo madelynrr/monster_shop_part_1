@@ -115,5 +115,15 @@ RSpec.describe 'as a merchant', type: :feature do
       expect(page).to_not have_content("ID: #{order_2.id}")
       expect(page).to have_link "See My Items"
     end
+
+    it "can click a link to see coupon index page" do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merchant_admin)
+
+      visit "/merchant"
+
+      click_link "View My Coupons"
+
+      expect(current_path).to eq("/merchant/coupons")
+    end
   end
 end
