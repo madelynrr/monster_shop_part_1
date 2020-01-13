@@ -1,0 +1,12 @@
+<%= form_tag "/merchant/coupon", method: :post do  %>
+
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
+
+  <%= label_tag :code %>
+  <%= text_field_tag :code %>
+
+  <%= label_tag :percentage %>
+  <%= text_field_tag :percentage %>
+
+<% end %>
