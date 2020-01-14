@@ -4,7 +4,7 @@
     <%= coupon.code %>
     <%= coupon.percentage %>
 
-    <%= button_to "Delete Coupon" %>
+    <%= button_to "Delete Coupon", "/merchant/coupons/#{coupon.id}", method: :delete %>
   </section>
 <% end %>
 
