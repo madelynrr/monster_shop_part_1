@@ -22,6 +22,9 @@ class Merchant::CouponsController < Merchant::BaseController
     end
   end
 
+  def edit
+  end
+
   private
     def coupon_params
       params.permit(:name,:code,:percentage)
