@@ -37,6 +37,12 @@ class Merchant::CouponsController < Merchant::BaseController
     end
   end
 
+  def destroy
+    coupon = Coupon.find(params[:id])
+    coupon.destroy
+    redirect_to "/merchant/coupons"
+  end
+
   private
     def coupon_params
       params.permit(:name,:code,:percentage)
