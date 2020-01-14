@@ -28,7 +28,6 @@ RSpec.describe "as a merchant user" do
       end
 
       expect(current_path).to eq("/merchant/coupons")
-
       expect(page).not_to have_css("#coupon-#{coupon_1.id}")
   end
 end
