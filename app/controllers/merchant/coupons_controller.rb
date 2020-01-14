@@ -4,6 +4,10 @@ class Merchant::CouponsController < Merchant::BaseController
     @coupons = Coupon.where("merchant_id = #{current_user.merchant.id}")
   end
 
+  def show
+    @coupon = Coupon.find(params[:id])
+  end
+
   def new
   end
 
@@ -15,6 +19,21 @@ class Merchant::CouponsController < Merchant::BaseController
     else
       flash[:error] = coupon.errors.full_messages.to_sentence
       render :new
+    end
+  end
+
+  def edit
+    @coupon = Coupon.find(params[:id])
+  end
+
+  def update
+    @coupon = Coupon.find(params[:id])
+    @coupon.update(coupon_params)
+    if @coupon.save
+      redirect_to "/merchant/coupons/#{@coupon.id}"
+    else
+      flash.now[:error] = @coupon.errors.full_messages.to_sentence
+      render :edit
     end
   end
 
