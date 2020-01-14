@@ -23,6 +23,7 @@ class Merchant::CouponsController < Merchant::BaseController
   end
 
   def edit
+    @coupon = Coupon.find(params[:id])
   end
 
   private
