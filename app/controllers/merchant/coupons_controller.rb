@@ -26,6 +26,9 @@ class Merchant::CouponsController < Merchant::BaseController
     @coupon = Coupon.find(params[:id])
   end
 
+  def update
+  end
+
   private
     def coupon_params
       params.permit(:name,:code,:percentage)
