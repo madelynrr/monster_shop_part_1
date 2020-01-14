@@ -69,6 +69,7 @@ Rails.application.routes.draw do
     get '/coupons/new', to: 'coupons#new'
     post '/coupons', to: 'coupons#create'
     get '/coupons/:id', to: 'coupons#show'
+    get '/coupons/:id/edit', to: 'coupons#edit'
   end
 
   namespace :admin do
