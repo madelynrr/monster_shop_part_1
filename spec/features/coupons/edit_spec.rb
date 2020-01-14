@@ -27,6 +27,10 @@ RSpec.describe "as a merchant user" do
 
       expect(current_path).to eq("/merchant/coupons/#{coupon_1.id}/edit")
 
+      expect(find_field("Name").value).to eq(coupon_1.name)
+      expect(find_field("Code").value).to eq(coupon_1.code)
+      expect(find_field("Percentage").value).to eq(coupon_1.percentage.to_s)
+
       name = "20% Off"
       code = "2345"
       percentage = 20
