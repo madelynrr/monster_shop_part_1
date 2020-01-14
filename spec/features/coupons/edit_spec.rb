@@ -21,11 +21,11 @@ RSpec.describe "as a merchant user" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant_1_admin)
 
-      visit "/merchant/coupon/#{coupon_1.id}"
+      visit "/merchant/coupons/#{coupon_1.id}"
 
       click_button "Edit Coupon"
 
-      expect(current_path).to eq("/merchant/coupon/#{coupon_1.id}/edit")
+      expect(current_path).to eq("/merchant/coupons/#{coupon_1.id}/edit")
 
       name = "20% Off"
       code = "2345"
