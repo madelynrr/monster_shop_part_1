@@ -14,6 +14,9 @@ class Order <ApplicationRecord
     item_orders.sum('price * quantity')
   end
 
+  def discount_total
+  end
+
   def cancel
     item_orders.each do |item_order|
       item_order.update(status: 0)
