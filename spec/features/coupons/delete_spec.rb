@@ -59,9 +59,10 @@ RSpec.describe "as a merchant user" do
       expect(page).not_to have_css("#coupon-#{coupon_1.id}")
   end
 
-  xit "cannot delete a coupon that has been used on an order" do
+  it "cannot delete a coupon that has been used on an order" do
     merchant = create(:random_merchant)
     user = create(:random_user)
+    user_2 = create(:random_user, role: 2, merchant_id: merchant.id)
     item_1 = create(:random_item, price: 100, merchant_id: merchant.id)
     coupon_1 = Coupon.create(name: "20% Off",
                              code: "1234",
@@ -98,11 +99,18 @@ RSpec.describe "as a merchant user" do
 
     click_button "Create Order"
 
+    click_link "Log Out"
+
+    click_link "Login"
+    fill_in :email, with: user_2.email
+    fill_in :password, with: user_2.password
+    click_button "Login"
+
     visit "/merchant/coupons/#{coupon_1.id}"
 
     click_button "Delete Coupon"
 
-    expect(page).not_to have_css("#coupon-#{coupon_1.id}")
+    expect(page).to have_css("#coupon-#{coupon_1.id}")
 
     expect(page).to have_content("Cannot delete coupon, already applied to an order.")
   end
