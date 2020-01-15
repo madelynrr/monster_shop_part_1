@@ -39,7 +39,11 @@ class Merchant::CouponsController < Merchant::BaseController
 
   def destroy
     coupon = Coupon.find(params[:id])
-    coupon.destroy
+    if coupon.orders.count > 0
+      flash[:error] = "Cannot delete coupon, already applied to an order."
+    else
+      coupon.destroy
+    end
     redirect_to "/merchant/coupons"
   end
 
