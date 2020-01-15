@@ -54,6 +54,10 @@
 <section id="grandtotal">
   <p> Total Quantity of Items: <%=@order.items.count%></p>
   <p>Total: <%=number_to_currency(@order.grandtotal)%></p>
+  <% if current_coupon %>
+    <p>Discount Total: <%= number_to_currency(@order.discount_total) %></p>
+    <p>Coupon Code Used: <%= current_coupon.code %></p>
+  <% end %>
 </section>
 <section id="dateinfo">
   <p> This order was placed at: <%= @order.created_at%></p>
