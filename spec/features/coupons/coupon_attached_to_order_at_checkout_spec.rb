@@ -9,6 +9,10 @@ RSpec.describe "as a logged in user" do
                              code: "1234",
                              percentage: 20,
                              merchant_id: merchant.id)
+    coupon_2 = Coupon.create(name: "30% Off",
+                             code: "2345",
+                             percentage: 30,
+                             merchant_id: merchant.id)
     visit "/"
     click_link "Login"
     fill_in :email, with: user.email
@@ -21,7 +25,9 @@ RSpec.describe "as a logged in user" do
     visit "/cart"
 
     fill_in :coupon_code, with: coupon_1.code
+    click_button "Add Coupon To Order"
 
+    fill_in :coupon_code, with: coupon_2.code
     click_button "Add Coupon To Order"
 
     click_link "Checkout"
@@ -44,6 +50,6 @@ RSpec.describe "as a logged in user" do
 
     order = Order.last
 
-    expect(order.coupon_id).to eq(coupon_1.id)
+    expect(order.coupon_id).to eq(coupon_2.id)
   end
 end
