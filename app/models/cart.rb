@@ -31,7 +31,18 @@ class Cart
       Item.find(item_id).price * quantity
     end
   end
-  
+
+  def discounted_total(coupon)
+    @contents.sum do |item_id,quantity|
+      item = Item.find(item_id)
+      if (item.merchant_id == coupon.merchant_id)
+        (item.price * quantity * ((100 - coupon.percentage) / 100))
+      else
+        item.price * quantity
+      end
+    end
+  end
+
   def add_quantity(item_id)
     @contents[item_id] += 1
   end
