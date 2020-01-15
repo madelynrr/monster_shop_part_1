@@ -47,7 +47,12 @@
 
   <%= form_tag "/coupon_sessions/update", method: :update do %>
     <%= label_tag :coupon_code %>
-    <%= text_field_tag :coupon_code, "#{current_coupon.code}" %>
+    <% if session[:coupon] %>
+      <%= text_field_tag :coupon_code, "#{current_coupon.code}" %>
+    <% else %>
+      <%= text_field_tag :coupon_code%>
+    <% end %>
+
     <%= submit_tag "Add Coupon To Order" %>
   <% end %>
 
