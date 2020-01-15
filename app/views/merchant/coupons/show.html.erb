@@ -1,6 +1,8 @@
+<section class = "grid-item">
 <h3><%= @coupon.name %></h3>
 <p>Coupon Code: <%= @coupon.code %></p>
 <p>Percent Off: <%= @coupon.percentage %>%</p>
+</section>
 
 <%= button_to "Edit Coupon", "/merchant/coupons/#{@coupon.id}/edit", method: :get %>
 
