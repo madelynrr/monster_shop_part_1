@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_coupon
-    @current_coupon ||= Coupon.find(session[:coupon]) if session[:coupon]
+      current_coupon ||= Coupon.find(session[:coupon]) if session[:coupon]
   end
 
 end
