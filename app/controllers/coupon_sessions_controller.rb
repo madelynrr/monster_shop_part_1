@@ -1,0 +1,3 @@
+class CouponSessionsController < ApplicationController
+  
+end
