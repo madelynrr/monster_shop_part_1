@@ -1,13 +1,14 @@
+<br>
 <section class = "grid-container">
   <% @coupons.each do |coupon| %>
     <section class = "grid-item" id="coupon-<%= coupon.id %>">
-      <%= link_to coupon.name, "/merchant/coupons/#{coupon.id}" %>
-      <%= coupon.code %>
-      <%= coupon.percentage %>
+      <%= link_to coupon.name, "/merchant/coupons/#{coupon.id}" %><br>
+      <p>Code: <%= coupon.code %></p>
+      <p><%= coupon.percentage %>% Off</p>
 
       <%= button_to "Delete Coupon", "/merchant/coupons/#{coupon.id}", method: :delete %>
     </section>
   <% end %>
-</section>
+</section><br>
 
 <%= button_to "Add A Coupon", "/merchant/coupons/new", method: :get %>
