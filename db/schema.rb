@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200113015817) do
+ActiveRecord::Schema.define(version: 20200115020541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20200113015817) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "current_status", default: 0
+    t.bigint "coupon_id"
+    t.index ["coupon_id"], name: "index_orders_on_coupon_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -101,6 +103,7 @@ ActiveRecord::Schema.define(version: 20200113015817) do
   add_foreign_key "item_orders", "items"
   add_foreign_key "item_orders", "orders"
   add_foreign_key "items", "merchants"
+  add_foreign_key "orders", "coupons"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "items"
   add_foreign_key "users", "merchants"
