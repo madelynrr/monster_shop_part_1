@@ -21,6 +21,7 @@ class OrdersController <ApplicationController
           price: item.price
           })
       end
+      order.apply_coupon(current_coupon.id) if current_coupon
       session.delete(:cart)
       flash[:success] = 'You have placed your order!'
       redirect_to '/profile/orders'
