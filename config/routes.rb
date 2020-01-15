@@ -90,4 +90,6 @@ Rails.application.routes.draw do
   get '/user/password/edit', to: 'users_password#edit'
   patch '/user/password/update', to: 'users_password#update'
   patch '/user/id', to: 'users#update'
+
+  post '/coupon_sessions/update', to: 'coupon_sessions#update'
 end

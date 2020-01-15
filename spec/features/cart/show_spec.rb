@@ -69,7 +69,6 @@ RSpec.describe 'Cart show' do
         visit '/cart'
         expect(page).to_not have_link("Empty Cart")
       end
-
     end
   end
 end
