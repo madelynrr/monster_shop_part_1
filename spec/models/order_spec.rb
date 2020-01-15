@@ -64,5 +64,19 @@ describe Order, type: :model do
 
       expect(@order_1.current_status).to eq("shipped")
     end
+
+    it ".apply_coupon" do
+      merchant = create(:random_merchant)
+      user = create(:random_user)
+      coupon_1 = Coupon.create(name: "20% Off",
+                               code: "1234",
+                               percentage: 20,
+                               merchant_id: merchant.id)
+      order = create(:random_order, user_id: user.id)
+
+      order.apply_coupon(coupon_1.id)
+
+      expect(order.coupon_id).to eq(coupon_1.id)
+    end
   end
 end
