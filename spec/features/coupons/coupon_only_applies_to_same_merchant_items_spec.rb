@@ -50,19 +50,6 @@ RSpec.describe "as a user" do
 
     expect(item_order_1.price).to eq(80.0)
     expect(item_order_2.price).to eq(10.0)
-
-
-    # visit "/profile/orders/#{order.id}"
-    #
-    # within "#price-#{item_order_1.id}" do
-    #   expect(page).to have_content("$100.00")
-    # end
-    #
-    # within "#price-#{item_order_2.id}" do
-    #   expect(page).to have_content("$10.00")
-    # end
-    #
-    # expect(page).to have_content("Discounted Total: $90.00")
   end
 
   it "displays a discounted grand total on cart show page" do
