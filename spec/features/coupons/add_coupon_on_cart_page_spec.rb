@@ -18,6 +18,10 @@ RSpec.describe "as a visitor" do
     click_button "Add Coupon To Order"
 
     expect(current_path).to eq("/cart")
-    expect(session[:coupon]).to eq(coupon_1.id)
+
+    visit "/items"
+    visit "/cart"
+
+    expect(find_field("Coupon Code").value).to eq(coupon_1.code)
   end
 end
