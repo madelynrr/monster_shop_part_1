@@ -48,7 +48,7 @@ RSpec.describe "as a user" do
 
     visit "/profile/orders/#{last_order.id}"
 
-    expect(page).to have_content("Coupon Code Used: #{coupon_1.code}")
+    expect(page).to have_content("Coupon Used: #{coupon_1.name}")
     expect(page).to have_content("Discount Total: $90.00")
   end
 

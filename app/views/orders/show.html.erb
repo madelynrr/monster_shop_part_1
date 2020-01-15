@@ -56,7 +56,7 @@
   <p>Total: <%=number_to_currency(@order.grandtotal)%></p>
   <% if current_coupon %>
     <p>Discount Total: <%= number_to_currency(@order.discount_total) %></p>
-    <p>Coupon Code Used: <%= current_coupon.code %></p>
+    <p>Coupon Used: <%= current_coupon.name %></p>
   <% end %>
 </section>
 <section id="dateinfo">
