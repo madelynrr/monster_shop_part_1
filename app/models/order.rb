@@ -11,10 +11,11 @@ class Order <ApplicationRecord
   enum current_status: %w(pending packaged shipped cancelled)
 
   def grandtotal
-    item_orders.sum('price * quantity')
+    item_orders.joins(:item).sum("items.price * quantity")
   end
 
   def discount_total
+    item_orders.sum('price * quantity')
   end
 
   def cancel
