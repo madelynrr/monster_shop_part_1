@@ -39,7 +39,11 @@
         <td><p><%= image_tag item_order.item.image %></p></td>
         <td><p><%= item_order.item.description %></p></td>
         <td><p><%= link_to item_order.item.merchant.name, "/merchants/#{item_order.item.merchant.id}"%></p></td>
-        <td><p><%= number_to_currency(item_order.price)%></p></td>
+        
+        <section id="price-<%= item_order.id %>">
+          <td><p><%= number_to_currency(item_order.price)%></p></td>
+        </section>
+
         <td><p><%= item_order.quantity%></p></td>
         <td><p><%= number_to_currency(item_order.subtotal)%></p></td>
       </section>
