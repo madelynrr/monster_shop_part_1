@@ -48,18 +48,24 @@ RSpec.describe "as a user" do
     item_order_1 = order.item_orders.first
     item_order_2 = order.item_orders.last
 
-    visit "/profile/orders/#{order.id}"
+    expect(item_order_1.price).to eq(80.0)
+    expect(item_order_2.price).to eq(10.0)
 
-    within "#price-#{item_order_1.id}" do
-      expect(page).to have_content("$80.00")
-    end
 
-    within "#price-#{item_order_2.id}" do
-      expect(page).to have_content("$10.00")
-    end
+    # visit "/profile/orders/#{order.id}"
+    #
+    # within "#price-#{item_order_1.id}" do
+    #   expect(page).to have_content("$100.00")
+    # end
+    #
+    # within "#price-#{item_order_2.id}" do
+    #   expect(page).to have_content("$10.00")
+    # end
+    #
+    # expect(page).to have_content("Discounted Total: $90.00")
   end
 
-  xit "coupon reduces item order price by coupon percentage" do
+  it "displays a discounted grand total on cart show page" do
     merchant_1 = create(:random_merchant)
     merchant_2 = create(:random_merchant)
     user = create(:random_user)
@@ -78,38 +84,14 @@ RSpec.describe "as a user" do
 
     visit "/items/#{item_1.id}"
     click_button "Add To Cart"
+    visit "/items/#{item_2.id}"
+    click_button "Add To Cart"
 
     visit "/cart"
 
     fill_in :coupon_code, with: coupon_1.code
     click_button "Add Coupon To Order"
 
-    click_link "Checkout"
-
-    name = user.name
-    address = user.address
-    city = user.city
-    state = user.state
-    zip_code = user.zip_code
-
-    fill_in :name, with: name
-    fill_in :address, with: address
-    fill_in :city, with: city
-    fill_in :state, with: state
-    fill_in :zip, with: zip_code
-
-    click_button "Create Order"
-
-    order = Order.last
-    item_order = order.item_orders.first
-
-    visit "/profile/orders/#{order.id}"
-
-    within "#item-#{item_order}-price" do
-      expect(page).to have_content("")
-    end
-
-    save_and_open_page
-
+    expect(page).to have_content("Discounted Total: $90.00")
   end
 end
