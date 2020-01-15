@@ -72,5 +72,4 @@ class OrdersController <ApplicationController
     flash[:success] = 'You have placed your order!'
     redirect_to '/profile/orders'
   end
-
 end
