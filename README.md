@@ -3,18 +3,18 @@
 
 ## Introduction
 
-Monster Shop is a basic, Rails e-commerce application. Assigned as a group project during Mod 2 of 4 to our group of five, we worked across a period of twelve days to implement a slew of e-commerce basics including CRUD functionality, log in and authentication, authorization (for four different user types), cart functionality, and statistics for multiple aspects of the site (most popular, least popular, etc.)
+Monster Shop is a basic, Rails e-commerce application. Assigned as a group project during Mod 2 of 4 to our group of five, we worked across a period of twelve days to implement a slew of e-commerce basics including CRUD functionality, log in and authentication, authorization (for four different user types), cart functionality, and statistics for multiple aspects of the site (most popular, least popular, etc.) For our solo project we were assigned the task of setting up and implementing a coupon system with full CRUD functionality, the ability to store a coupon in a session, and displayed information on the coupon used and the discounted price.
 
-View Monster Shop from heroku [here](https://thawing-dusk-36674.herokuapp.com/).
+View Monster Shop from heroku [here](https://monster-shop-solo-mrr.herokuapp.com/).
 
 
 ## Implementation Instructions
 
 To implement Monster Shop locally, run the following commands:
 
-<code>git clone git@github.com:linda-le1/monster_shop_part_1.git</code>
+<code>git clone git@github.com:madelynrr/monster_shop_solo.git</code>
 
-<code>cd monster_shop_part_1</code>
+<code>cd monster_shop_solo</code>
 
 <code>bundle install</code>
 
@@ -44,7 +44,7 @@ Deploy Monster Shop from heroku.
 
 [Daniel Moran](https://github.com/danmoran-pro)
 
-[Madelyn R. Romero](https://github.com/madelynrr)
+[Madelyn R. Romero](https://github.com/madelynrr) -- Majority of project completed as a group, coupon functionality was completed solo
 
 
 ## Background and Description
