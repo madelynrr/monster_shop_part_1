@@ -37,6 +37,17 @@ describe Order, type: :model do
       expect(@order_1.grandtotal).to eq(230)
     end
 
+    it ".discount_total" do
+      coupon_1 = Coupon.create(name: "10% Off",
+                               code: "1234",
+                               percentage: 10,
+                               merchant_id: @meg.id)
+
+      order = Order.last
+
+      expect(order.discount_total(coupon_1)).to eq(90.0)
+    end
+
     it "change_current_status_to_cancelled" do
       expect(@order_1.current_status).to eq("pending")
 
