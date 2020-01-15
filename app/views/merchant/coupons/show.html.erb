@@ -3,3 +3,5 @@
 <p>Percent Off: <%= @coupon.percentage %>%</p>
 
 <%= button_to "Edit Coupon", "/merchant/coupons/#{@coupon.id}/edit", method: :get %>
+
+<%= button_to "Delete Coupon", "/merchant/coupons/#{@coupon.id}", method: :delete %>

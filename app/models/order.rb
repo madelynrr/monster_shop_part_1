@@ -40,4 +40,8 @@ class Order <ApplicationRecord
   def ship
     update(current_status: 2)
   end
+
+  def apply_coupon(id)
+    update(coupon_id: id)
+  end
 end
