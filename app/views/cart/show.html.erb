@@ -49,7 +49,7 @@
 
   <p><%= link_to "Empty Cart", "/cart", method: :delete %></p>
 
-  <%= form_tag "/coupon_sessions/update", method: :update do %>
+  <%= form_tag "/coupon_sessions", method: :post do %>
     <%= label_tag :coupon_code %>
     <% if session[:coupon] %>
       <%= text_field_tag :coupon_code, "#{current_coupon.code}" %>

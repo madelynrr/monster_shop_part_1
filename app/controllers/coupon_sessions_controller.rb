@@ -1,6 +1,6 @@
 class CouponSessionsController < ApplicationController
 
-  def update
+  def create
     coupon = Coupon.find_by(code: params[:coupon_code])
     if coupon
       session[:coupon] = coupon.id
